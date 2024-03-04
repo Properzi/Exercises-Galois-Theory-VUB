@@ -1,0 +1,583 @@
+\documentclass[a4paper,10pt,reqno]{amsart}
+
+% \usepackage[left=0.5cm,top=-1.0cm,bottom=0.5cm,right=0.5cm]{geometry}
+
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{pdfpages}
+\usepackage{changes}
+\usepackage{exscale,cite,color,amsopn}
+\usepackage[colorlinks=true,pdftex,unicode=true,linktocpage,bookmarksopen,hypertexnames=true]{hyperref}
+\usepackage{aliascnt}
+\usepackage{colortbl}
+\usepackage{enumitem}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+\usepackage[capitalise]{cleveref}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Hom}{\operatorname{Hom}}
+
+
+\makeatletter
+\newtheorem{thm}{Theorem}
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem*{lem*}{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{pro}[thm]{Proposition}
+
+\theoremstyle{definition} % change of style
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rem}[thm]{Remark}
+%\newtheorem{exa}[thm]{Example}
+\newtheorem{ex}{Exercise}[section]
+\newenvironment{sol}
+  {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
+  {\end{proof}}
+
+  \setlength\parindent{0pt}
+
+
+
+
+\title{Exercises Galois Theory and some solutions}
+
+\author{Carsten Dietzel, Silvia Properzi}
+%\date{February 2024}
+\address[Carsten Dietzel]{Department of Mathematics and Data Science, Vrije Universiteit Brussel, Pleinlaan 2, 1050 Brussel, Belgium}
+\email{Carsten.Dietzel@vub.be}
+
+
+\address[Silvia Properzi]{Department of Mathematics and Data Science, Vrije Universiteit Brussel, Pleinlaan 2, 1050 Brussel, Belgium}
+\email{Silvia.Properzi@vub.be}
+
+\begin{document}
+
+\maketitle
+\section{Week 1}
+
+
+\begin{ex}
+    Let $\sigma : K\to L$ be a field homomorphism, prove that $\sigma$ is injective.
+\end{ex}
+\begin{sol}[\textit{using ring theory}]
+    We know that $\ker\sigma$ is an ideal of $K$.
+    But $K$ is a field so the only possibilities are that $\ker\sigma=\{0\}$ or $\ker\sigma=K$.
+    As $\sigma(1)=1\neq 0$, we know that $1\not\in \ker\sigma$, hence $\ker\sigma=\{0\}$ which means that $\sigma$ is injective.
+\end{sol}
+\begin{sol}[\textit{by hands}]
+    Let $a,b\in K$ such that $\sigma(a)=\sigma(b)$.
+    Then $\sigma(a-b)=\sigma(a)-\sigma(b)=0$.
+    If we assume that $a\neq b$, then $a-b$ is a non-zero element in a field, hence it is invertible.
+    Then 
+    \[
+    1=\sigma(1)=\sigma((a-b)(a-b)^{-1})=
+    \sigma(a-b)\sigma((a-b)^{-1})=0,
+    \]
+    which is a contradiction.
+    Therefore $a=b$ and so $\sigma$ is injective.
+\end{sol}
+
+\begin{ex}
+    Let $K$ be a field, $K_0$ be its prime field and $\sigma:K\to K$ be a field homomorphism. Prove that $\sigma\in\Hom(K/K_0,K/K_0)$.
+\end{ex}
+
+
+\begin{ex}
+Let $\Q[i]=\{a+ib\mid a,b\in \Q\}$, $\Q[\sqrt{2}]=\{a+\sqrt{2}b\mid a,b\in\Q\}$ and $\Q(i)=\{\frac{a+ib}{c+di}\mid a,b,c,d\in \Q\}$, $\Q(\sqrt{2})=\{\frac{a+\sqrt{2}b}{c+\sqrt{2}d}\mid a,b,c,d\in\Q\}$.
+
+\begin{enumerate}[label=(\roman*)]
+    \item Prove that $\Q(\sqrt{2})=\Q[\sqrt{2}]$ and $\Q(i)=\Q[i]$.
+    \item Prove that $\Q(i)$ and $\Q(\sqrt{2})$ are not isomorphic.
+\end{enumerate}
+\end{ex}
+
+\begin{ex}~
+    \begin{enumerate}[label=(\roman*)]
+        \item Let $a=\sqrt{2}$ and $b=\sqrt[3]{3}$. Prove that $ab$ is algebraic over $\Q$.
+        \item Show that $\sqrt{2} + i$ is algebraic over $\Q$ by finding a nonzero polynomial $f \in \Q[X]$ with $\deg(f) = 4$ such that $f(\sqrt{2} + i) = 0$. What are the other roots of $f$?
+    \end{enumerate}
+\end{ex}
+
+\begin{sol}~
+    \begin{enumerate}[label=(\roman*)]
+        \item Observe that $ab^6=\sqrt{2}^6\sqrt[3]{3}^6=8\cdot 9=72$.
+        Therefore $ab$ is a root of the polynomial $X^6-72\in\Q[X]$.
+        \item let $\alpha=\sqrt{2} + i$. 
+        Then $\alpha^2=2+2\sqrt{2}i-1=1+2\sqrt{2}i$ and $\alpha^2-1=2\sqrt{2}i$.
+        Squaring both sides of the last equality we have that
+        \[
+         \alpha^4-2\alpha^2+1=(\alpha^2-1)^2=(2\sqrt{2}i)^2=-8.
+        \]
+        Therefore the polynomial 
+        \[
+        f(X)=X^4-2X^2+1+8=X^4-2X^2+9\in \Q[X]
+        \]
+        is such that $f(\alpha)=0$.
+
+        Looking for other roots of $f$ means to find all $x\in C$
+        such that $f(x)=0$, i.e. $x^4-2x^2+9=0$. 
+        Going back to how we construct $f$, this equation 
+        can also be written as $(x^2-1)^2=(2\sqrt{2}i)^2$.
+        Therefore $x^2-1=2\sqrt{2}i$ or $x^2-1=-2\sqrt{2}i$.
+        So 
+        \[
+        x^2=2\sqrt{2}i+1=\alpha^2\qquad\text{ or } \qquad x^2=-2\sqrt{2}i+1=\overline{\alpha^2}=\overline{\alpha}^2,
+        \]
+        where $\overline{\alpha}$ indicates the complex conjugate of 
+        $\alpha$.
+        Thus $x=\pm \alpha$ or $x=\pm \overline{\alpha}$ and the 4 roots of $f$ are
+        \[
+        x_1=\alpha=\sqrt{2} + i, x_2=-\alpha=-\sqrt{2} - i,
+        \]
+        \[
+        x_3=\overline{\alpha}=\sqrt{2} - i, x_4=-\overline{\alpha}=-\sqrt{2} + i.
+        \]
+    \end{enumerate}
+\end{sol}
+
+\begin{ex} Let $p$ be a prime number. Denote by $\binom{n}{k}$ the binomial coefficient ``$n$ over $k$".
+    \begin{enumerate}[label=(\roman*)]
+    \item Prove that $p$ divides $\binom{p}{k}$ for $1 \leq k \leq p-1$.
+    \item Let $K$ be a field of characteristic $p$. Show that the map $\Phi: K \to K$; $x \mapsto x^p$ is indeed a field endomorphism. This map is called the \emph{Frobenius endomorphism} of $K$.
+\end{enumerate}
+\end{ex}
+
+\begin{ex}
+    Let $L/K$ be a field extension and let $M$ be a subring of $L$ that contains $K$. Suppose that $\dim_KM < \infty$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Prove that for any $\alpha \in M$, there is a nonzero $f \in K[X]$ with $f(\alpha) = 0$.
+
+        \noindent \textit{Hint:} The elements $\alpha^n$ ($n \geq 0$) are linearly dependent.
+        
+        \item Prove that $M$ is a field.
+        
+        \noindent \textit{Hint:} For any $0 \neq \alpha \in K$, let $f \in \Q[X]$ be a nonzero polynomial with $f(\alpha) = 0$ whose degree is as small as possible. If $f = \sum_{i=0}^{\infty} a_iX^i$, prove that $a_0 \neq 0$ and use this to construct an inverse of $\alpha$ that lies in $M$.
+    \end{enumerate}
+\end{ex}
+
+\begin{ex}
+Let $K$ be field.
+\begin{enumerate}[label=(\roman*)]
+    \item Prove that $K[X]$ is a PID.
+    \item Let $I\neq \{0\}$ be an ideal of $K[X]$, then there exists a unique monic polynomial that generates $I$ as an ideal.
+\end{enumerate}
+    
+\end{ex}
+\section{Week 2}
+
+\begin{ex}
+    Let $L/K$ be a field extension and let $\alpha, \beta\in L$ such that 
+    \[
+    [K(\alpha):K]=[K(\beta):K]=2.
+    \]
+    Assume that the characteristic of $K$ is not 2.
+    \begin{enumerate}[label=(\roman*)]
+    \item Prove that there is an $\alpha' \in L$ such that $K(\alpha') = K(\alpha)$ and $\alpha'^2 \in K$.
+    \item Assume that $\alpha,\beta \in L$ satisfy $\alpha^2,\beta^2 \in K$. Prove that $K(\alpha)=K(\beta)$ if and only if $\frac{\alpha^2}{\beta^2}$ is a square in $K$.
+    \item Prove that there is a bijective map 
+    \[
+    K^\times/(K^\times)^2\longrightarrow \{L\mid L/K \text{ is a field extension with } [L:K] \leq 2\}.
+    \]
+\end{enumerate}    
+\end{ex}
+\begin{sol}~
+    \begin{enumerate}[label=(\roman*)]
+        \item Since $[K(\alpha):K]=2$, $\alpha\not\in K$ and the 3 
+        elements $1,\alpha,\alpha^2$ are linearly dependent over $K$.
+        Thus there exist $a_0,a_1,a_2\in K$ not all zero such that 
+        \[
+        a_0+a_1\alpha+a_2\alpha^2=0.
+        \]
+        If $a_2=0$, then $a_0+a_1\alpha=0$, hence either $a_1=0$ or 
+        $\alpha=-a_0/a_1$. 
+        If $a_1=0$, the also $a_0=0$. But this is not possible 
+        because $(a_0,a_1,a_2)\neq (0,0,0)$.
+        On the other hand, if $\alpha=-a_0/a_1$, then $\alpha\in K$, a contradiction.
+
+        So we have that $a_2\neq 0$ and we can divide by $a_2$,
+        obtaining
+        \[        b+a\alpha+\alpha^2=0, \text{ i.e. } \alpha^2+a\alpha=-b,
+        \]
+        where $a=a_2^{-1}a_1\in K$ and $b=a_2^{-1}a_0\in K$. 
+        Since we assumed that $K$ has not characteristic two,
+        we can also complete the square:
+        \[
+        (\alpha+a/2)^2=\alpha^2+a\alpha+a^2/4=-b+a^2/4\in K.
+        \]
+        Therefore $\alpha'=\alpha+a/2$
+        is such that $\alpha'^2=-b+a^2/4\in K$.
+        Moreover $\alpha'=\alpha+a/2\in K(\alpha)$, so $K(\alpha')\subseteq K(\alpha)$ and $\alpha=\alpha'-a/2\in K(\alpha')$ so $K(\alpha)\subseteq K(\alpha.)$. Therefore $K(\alpha)=K(\alpha')$ and $\alpha'^2\in K$.
+        \item Assume that $\frac{\alpha^2}{\beta^2}$ is a square in $K$,
+        i.e. there is a $k\in K$ such that
+        $\frac{\alpha^2}{\beta^2}=k^2$.
+        (Note that $k\neq 0$ otherwise $\alpha=0\in K$
+        and $[K(\alpha):K]=[K:K]=1$.)
+
+        Then $\alpha=k^2\beta^2$, hence $\alpha=\pm k\beta\in K(\beta)$. So $K(\alpha)\subseteq K(\beta)$.
+        On the other hand, $\beta^2=\frac{\alpha^2}{k^2}$, hence $\beta=\pm \frac{\alpha}{k}\in K(\alpha)$. So $K(\beta)\subseteq K(\alpha)$.
+        Having proved both inclusions we deduce that 
+        $K(\alpha)=K(\beta)$.
+
+        Vice versa, assume that 
+        $K(\alpha)=K(\beta)$.
+        Knowing that $[K(\alpha):K]=2$, 
+        we have that $\{1,\alpha\}$ 
+        is a generating set of the $K$-vector space $K(\alpha)=K(\beta)$.
+        Therefore there exist $a,b\in K$ such that
+        $\beta=a+b\alpha$.
+        Squaring both sides of the equality, we get
+        $\beta^2=a^2+2ab\alpha+\alpha^2$.
+        So
+        $2ab\alpha=\beta^2-a^2-\alpha^2$ is a sum of elements in $K$.
+        Hence $2ab\alpha\in K$, but $\alpha\not\in K$.
+        Therefore the only possibility is that $2ab=0$, i.e. (since we are not in characteristic 2)
+        $ab=0$. But $b\neq 0$, otherwise $\beta=a\in K$, which is not possible (otherwise
+        and $[K(\beta):K]=[K:K]=1$).
+        Thus $a=0$, i.e. $\beta=b\alpha$ and so $\frac{\beta^2}{\alpha^2}=a^2$ is a square in $K$.
+        \item Let $L/K$ be a field extension with $[L:K]=2$. 
+        Take $\alpha\in L\setminus K$, then
+        \[
+        1<[K(\alpha):K]\leq [L:K]=2.
+        \]
+        Hence $L=K(\alpha)$.
+        Moreover, the first part of this exercise allows us to choose $\alpha$ such that $\alpha^2\in K$.
+        Now we can define the following map
+        \[\psi:\{L\mid L/K \text{ is a field extension with } [L:K] \leq 2\}\to K^\times/(K^\times)^2\]
+        as $\psi(K)=[1]$ and for
+        $[L:K]=2$ as $\psi(L)=[\alpha^2]\in K^\times/(K^\times)^2$, for $\alpha\in L\setminus K$ (so $L=K(\alpha)$) such that $\alpha^2\in K$.     
+        
+        This map is well-defined:
+        take $L/K$ of degree 2 and
+        $\alpha,\beta\in L\setminus K$ such that $\alpha^2\in K$.
+        Then, by the remark made at the beginning, $L=K(\alpha)=K(\beta)$ 
+        As shown in the second part of this exercise, this is equivalent to $\frac{\alpha^2}{\beta^2}\in (K^\times)^2$, so $[\alpha^2]=[\beta^2]\in K^\times/(K^\times)^2$.
+        (Note also that $[\alpha^2]=[1]$  if and only if $\alpha^2 =k^2\in K^2$,
+        so $\alpha=\pm k\in K$ and $K(\alpha)=L$.)
+
+        Let now prove that $\psi$ is injective.
+        Assume that we have 
+        two extension $L/K$ and 
+        $L'/K$ of degree $\leq 2$, such that
+        $[\alpha^2]=\psi(L)=\psi(L')=[\beta^2]$.
+        
+        If $[\beta^2]=[\alpha^2]=[1]$,
+        then $L=K(\alpha)=K=K(\beta)=L'$.
+        
+        Otherwise, $\beta^2/\alpha^2\in (K^\times)^2$,
+        so, by the previous part of this exercise,
+        $L=K(\alpha)=K(\beta)=L'$.     
+
+        Finally, for the subjectivity, let $x\in K^\times$.
+        If $x\in (K^\times)^2$, then $x=\alpha^2$ for some $\alpha\in K^\times$
+        and so $L=K(\alpha)$ is an extension of $K$ of degree $\leq 2$ 
+        and $\psi(L)=[\alpha]$.
+
+        If $x\not\in (K^\times)^2$, then we can find and extension $L=K(\alpha)$ such that
+        $\alpha^2=x\in K^\times$ and so $\psi(L)=[x]\in K^\times/(K^\times)^2$.
+        To construct this extension consider the polynomial $f(X)=X^2-x\in K[X]$.
+        It has to be irreducible, otherwise $X^2-x=(aX+b)(cX+d)=acX^2+(ad+bc)X+bd$, for some
+        $a,c\in K^\times$ and $b,d\in K$.
+        So $1=ac$, $0=ad+bc$ and $-x=bd$, i.e. $c=a^{-1}$, $d=-a^{-1}bc=bc^2$ and $-x=bd=b^2c^2\in (K^\times)^2$, a contradiction to the assumption $x\not\in (K^\times)^2$.
+        Then we can consider the field $L=K[X]/(X^2-x)$ that contains $K$
+        (it is a field because the ideal $(X^2-x)$ is maximal,
+        since it is generated by an irreducible polynomial).
+        Defining $\alpha$ as the class of $X$ in $L$ 
+        we get that $L=K(\alpha)$ and $\alpha^2=x\in K$.        
+    \end{enumerate}    
+\end{sol}
+
+\begin{ex}
+    Let $E/K$ be a field extension and 
+    $a$ and $b$ be algebraic over $K$.
+
+    \begin{enumerate}
+        \item Assume that $[K(a):K] = m$, $[K(b):K] = n$. Prove that $K[a,b] \subseteq E$ is generated, as a vector space over $K$, by the elements $a^ib^j$ ($1 \leq i \leq m$, $1 \leq j \leq n$).
+        \item Prove that $a+b$ and $ab$ are algebraic over $K$. Can you estimate the quantities $[K(a+b):K]$ and $[K(ab):K]$?
+        \item Find a polynomial $f \in \Q[X]$ such that $\deg(f) \leq 6$ and $f(\sqrt[3]{3} + \sqrt{5})$.
+    \end{enumerate}
+\end{ex}
+
+The following lemma can be used, without proof, in the following exercise.
+
+\begin{lem*}[Gauss' Lemma]
+    Let $A$ be a unique factorization domain and $K$ be its fraction field.
+    A non-constant polynomial $f\in A[X]$ is irreducible if and only if is primitive and is irreducible in $K[X]$.
+\end{lem*}
+
+\begin{ex} [Eisenstein's irreducibility criterion]
+    Let $A$ be a unique factorization domain and $K$ be its fraction field.
+    Let $f=\sum_{i=0}^n a_iX^i\in K[X]$ be a polynomial of degree $n>0$. 
+    Assume that there exists a prime element $p\in A$ such that
+    $p\mid a_i$ for all $i\in\{0,1,\dots,n-1\}$, $p\nmid a_n$ and
+    $p^2\nmid a_0$. Then $f$ is irreducible in $K[X]$. 
+\end{ex}
+
+
+\begin{ex}
+Let $\zeta\in\C$ be a primitive cubic root of one.
+Set $E=\Q[\sqrt[3]{2}]$, $F=\Q(\zeta)$ and $L=\Q[i]$.
+\begin{enumerate}[label=(\roman*)]
+    \item Prove that $[E:\Q]=3$ and $[F:\Q]=2$ and compute the minimal polynomial of $\zeta$ over $\Q$ and over $L$.
+    \item Prove that $EF=\Q(\sqrt[3]{2},\zeta)$.
+    \item Compute $[EF:\Q]$ and $[E\cap F:\Q]$.
+\end{enumerate}  
+\end{ex}
+
+\begin{ex}
+    Let $E/K$ be a field extension and let $L/K$ and $M/K$ be subextensions.
+    \begin{enumerate}[label=(\roman*)]
+    \item Prove that $[LM : K ] \cdot [L \cap M : K] \leq [L:K] \cdot [M:K]$.
+    \item Can you find examples where $[LM : K ] \cdot [L \cap M : K] < [L:K] \cdot [M:K]$?
+    
+    \noindent \textit{Hint:} Use two different roots of the polynomial $X^3 -2$.
+    \end{enumerate}  
+\end{ex}
+
+\begin{ex}
+    Let $E/K$ be a field extension and let $f \in K[X]$ be a polynomial such that $f$ factorizes in $E[X]$ as $f = \prod_{i=1}^n(x - \alpha_i)$. Prove by induction that $[K(\alpha_1,\alpha_2, \ldots, \alpha_n):K] \leq n!$.
+\end{ex}
+\section{Week 3}
+
+
+\begin{ex}
+    
+    For every polynomial $p(X)=\sum_{i=0}^n a_iX^i\in K[X]$ of degree $n$,
+    define its \emph{reciprocal polynomial} as
+    \[
+    \widehat{p}(X)=\sum_{i=0}^n a_{n-i}X^i.
+    \]
+    Let $p(X),q(X)\in K[X]$ be polynomials of degree $n$ and $m$ respectively such that $p(0)\neq 0$ and $q(0)\neq 0$. Prove that
+    \begin{enumerate}[label=(\roman*)]
+    \item $\widehat{p}(X)=X^np(1/X)$ in $K(X)$,
+    \item $\widehat{ \widehat{p}}(X)=p(X)$,
+    \item $\widehat{pq}(X)=\widehat{p}(X)\widehat{q}(X)$,
+    \item $\widehat{p}(X)$ is irreducible if and only if $p(X)$ is irreducible.
+    \end{enumerate}
+\end{ex}
+
+\begin{sol}
+Suppose that $p(X)=\sum_{i=0}^n a_iX^i$ has degree $n$ and $q(X)=\sum_{i=0}^m b_iX^i$ has degree $m$.
+    \begin{enumerate}[label=(\roman*)]
+    \item 
+    $X^np(1/X)=X^n\sum_{i=0}^n a_i(1/X)^i=\sum_{i=0}^n a_iX^{n-i}=\sum_{j=0}^n a_{n-j}X^j=\widehat{p}(X)$
+    \item Since $p(0)\neq 0$, $a_0\neq 0$, therefore $\deg(\widehat{p})=\deg(p)=n$. Hence, using the previous part of this exercise,
+    \[
+    \widehat{\widehat{p}}(X)=X^n\widehat{p}(1/X)=X^n(1/X)^np(1/(1/X))=p(X).
+    \]    
+    \item Since $p(0)\neq 0$ and $q(0)\neq 0$ we deduce that also $pq(0)\neq 0$.
+    Hence we can apply the previous results for $p,q$ and $pq$. 
+    So, using also that $pq(1/X)=p(1/X)q(1/X)$ and that $\deg{pq}=n+m$, we have that
+    \[
+    \widehat{pq}(X)=X^{n+m}pq(1/X)=X^np(1/X)X^mq(1/X)=\widehat{p}(X)\widehat{q}(X).
+    \]
+    \item Suppose $\widehat{p}(X)$ is irreducible and let $p=q_1q_2$ for
+    $q_1(X),q_2(X)\in K[X]$.
+    Note that $0\neq p(0)=q_1(0)q_2(0)$ implies that both $q_1(0)\neq 0$ and $q_2(0)\neq 0$.
+    Considering now the reciprocal polynomials and using the previous properties,
+    $\widehat{p}(X)=\widehat{q_1}(X)\widehat{q_2}(X)$.
+    Since $\widehat{p}(X)$ is irreducible, there is $i\in\{1,2\}$ such that $\widehat{q_i}$ 
+    is a constant, i.e. $\deg{q_i}=\deg{\widehat{q_i}}=0$.
+    Thus, $q_i$ is a constant too, and therefore $p(X)$ is irreducible.
+
+    Vice versa, assume that $p(X)$ is irreducible. Since we know that $p(X)=\widehat{\widehat{p}}$, by the property just proved, we obtain that $\widehat{p}$ 
+    is also irreducible.
+    \end{enumerate}
+\end{sol}
+
+
+
+\begin{ex}
+    Let $E/K$ be a field extension and $x\in E$ be an algebraic element and let $f=f(x,K)$ is the minimal polynomial of $x$ over $K$ of degree $\deg(f)=n$.
+    \begin{enumerate}[label=(\roman*)]
+    \item Prove that $[K(x):K]=n$.
+    \item Prove that $\frac{1}{f(0)}\widehat{f}$ is the minimal polynomial of $1/x$ over $K$.
+    \item Write $f(X)=\sum_{i=0}^na_iX^i=p(X^2)+Xd(X^2)$, where 
+    \[
+    p(X)=\sum_{j=0}^{\lfloor n/2\rfloor } a_{2j}X^{j}\text { and }
+    d(X)=\sum_{j=0}^{\lfloor n/2\rfloor } a_{2j+1}X^j.
+    \]
+    Let $g(X)=p(X)^2-Xd(X)^2$ and prove that
+    \begin{itemize}
+        \item if $d(x^2)=0$, then the minimal polynomial of $x^2$ over $K$ is $p(X)$,
+        \item if $d(x^2)\neq 0$, then the minimal polynomial of $x^2$ over $K$ is $(-1)^ng(X)$.
+    \end{itemize}
+    \noindent
+    \end{enumerate}
+\end{ex}
+\begin{sol}~
+    \begin{enumerate}[label=(\roman*)]
+    \item We will prove that $B=\{1,x,\dots, x^{n-1}\}$ is a basis of $K(x)$ as a $K$ vector space which implies that $[K(x):K]=\dim_K(K(x))=|B|=n$.
+    \begin{itemize}
+        \item[-] \textit{$B$ is a generating set for $K(x)$ as a $K$ vector space.}
+        
+        To prove this recall that $K(x)=K[x]$, since $x$ is algebraic over $K$.
+        
+        (Similar proof to $1)\Rightarrow 2)$ of Theorem 2.7 of the lecture notes.)
+
+        Let $z\in K(x)=K[x]$, say $z=h(x)$ for some $h\in K[X]$. 
+        Divide $h$ by $f$ to obtain polynomials $q,r\in K[X]$ 
+        such that $h=fq+r$, where $r=0$ or $\deg r<\deg f=n$. This implies that
+	\[
+		z=h(x)=f(x)q(x)+r(x)=r(x).
+	\]
+	Moreover we can write
+        $r=\sum_{i=0}^{n-1}c_iX^i$ for some $c_0,\dots,c_{n-1}\in K$. 
+        Thus $z=\sum_{i=0}^{n-1}c_ix^i\in \langle 1,x,\dots,x^{n-1}\rangle$
+        and hence $K[x]$ is generated by $\{1,x,\dots,x^{n-1}\}$ as a $K$-vector space.
+        \item[-] \textit{$B$ is linearly independent over $K$.}
+
+        If $B$ is linearly dependent over $K$ then there exists a linear combination 
+        $0=\sum_{i=0}^{n-1}c_ix^i$ over $K$, with not all $c_i$ equal to 0.
+        Then the polynomial $h(X)=\sum_{i=0}^{n-1}c_iX^i$ is in $K[X]\setminus\{0\}$
+        and has $x$ as a root.
+        So 
+        \[
+        n-1=\deg(h)\leq \deg(f)=n,
+        \]
+     a contradiction.    
+    \end{itemize}
+    \item Fist of all we note that $f(0)\neq 0$. Otherwise we can write $f(X)=Xg(X)$ for some $g(X)\in K[X]$, but $f$ is monic and irreducible in $K[X]$, hence $g(X)=1$ and $f(X)=X$.
+    Evaluating $f$ in $x$ we obtain $0=f(x)=x$, a contradiction with the hypothesis $x\neq 0$.
+
+    Since $f(0)\neq 0$, we can use the previous exercise and obtain that $\widehat{f}$ is also irreducible and $\widehat{f}=X^nf(1/X)$.
+    Hence
+    \[
+    \frac{1}{f(0)}\widehat{f}\left(1/x\right)=\frac{1}{f(0)}\left(1/x\right)^nf\left(\frac{1}{1/x}\right)=\frac{1}{f(0)x^n}f(x)=0.
+    \]
+    So we have that $\frac{1}{f(0)}\widehat{f}$ is an irreducible polynomial in $K[x]$ 
+    with $1/x$ as a root.
+    To prove that $\frac{1}{f(0)}\widehat{f}$ is 
+    the minimal polynomial of $1/x$ over $K$ it remains to prove that it is monic.
+    Looking at the definition of $\widehat{f}$ we see that its leading coefficient
+    is the constant term of $f$, i.e. $f(0)$.
+    Therefore the leading coefficient of $\frac{1}{f(0)}\widehat{f}$ is $\frac{1}{f(0)}f(0)=1$, hence $\frac{1}{f(0)}\widehat{f}$ is monic.
+    \item 
+    First of all note that 
+    \begin{equation}
+           0=f(x)=p(x^2)+xd(x^2), \label{eq: f(x)=0}
+    \end{equation} therefore
+    \[
+    g(x^2)=p(x^2)^2-x^2d(x^2)^2=(p(x^2)+xd(x^2))(p(x^2)-xd(x^2))=0.
+    \]
+    So $x^2$ is a root of $g$ and the degree of $g$ is 
+    \[
+   \begin{cases}
+        2\deg(p) &\text{ if }n\text{ is even}\\
+        1+2\deg(d)&\text{ if }n\text{ is odd}
+    \end{cases} =\begin{cases}
+        2\left\lfloor \frac{n}{2}\right\rfloor &\text{ if }n\text{ is even}\\
+        1+2\left\lfloor \frac{n}{2}\right\rfloor&\text{ if }n\text{ is odd}
+    \end{cases} = n.
+    \]
+    Moreover, by the first point of this exercise and the fact that the degree is multiplicative
+    \[
+    n=\deg(f)=[K(x):K]=[K(x):K(x^2)][K(x^2):K].
+    \]
+    Hence, to compute $[K(x^2):K]$ (which is also the degree of $f(x^2,K)$,
+    the minimal polynomial of $x^2$ over $K$), we need to know $[K(x):K(x^2)]$.
+    Observe that $X^2-x^2$ is a polynomial in $K(x^2)[X]$ which has $x$ has a root. Thus 
+    \[
+    [K(x^2):K]=\deg(x,K(x^2))\leq \deg(X^2-x^2)=2
+    \]
+    Therefore 
+    \begin{equation}\label{eq: deg of x^2}
+        [K(x^2):K]=\frac{[K(x):K]}{[K(x):K(x^2)]}\in\left\{n,\frac{n}{2}\right\}.
+    \end{equation}
+    \begin{itemize}
+        \item If $d(x^2)=0$, by Equation \eqref{eq: f(x)=0}, also $p(x^2)=0$ and $\deg(p)=\lfloor \frac{n}{2}\rfloor< n$.
+        So 
+        \[
+        [K(x^2):K]=\deg(f(x^2,K))\leq \deg(p)< n,
+        \]
+        thus, by \eqref{eq: deg of x^2}, $[K(x^2):K]=\frac{n}{2}$, which implies that $n$ has to be even, $p(X)$ monic and 
+        \[
+        [K(x^2):K]=\frac{n}{2}=\left\lfloor \frac{n}{2}\right\rfloor=\deg(p).
+        \]
+        Therefore $p(X)$ is a monic polynomial in $K[X]$
+        which as $x^2$ as a root and of degree $[K(x^2):K]=\deg(f(x^2,K))$,
+        hence it is $\deg(f(x^2,K))$,
+        the minimal polynomial of $x^2$ over $K$.
+        \item If $d(x^2)\neq0$, then, by Equation \eqref{eq: f(x)=0}, 
+        \[
+        x=-\frac{p(x^2)}{d(x^2)}\in K(x^2).
+        \]
+        Therefore $K(x)\subseteq K(x^2)\subseteq K(x)$ and so $K(x^2)=K(x)$,
+        which means $[K(x):K(x^2)]=1$ and, by \eqref{eq: deg of x^2} ,
+        \[
+        [K(x^2):K]=\frac{[K(x):K]}{[K(x):K(x^2)]}=[K(x):K]=n=\deg(g).
+        \]
+        Moreover the leading coefficient of $g(X)$ is
+        \[
+        \begin{cases}
+        a_n &\text{ if }n\text{ is even}\\
+        -a_n&\text{ if }n\text{ is odd}
+        \end{cases}=(-1)^na_n=(-1)^n .
+        \]
+        Therefore we have the monic polynomial  
+        $(-1)^ng(X)\in K[X]$ that vanishes in $x^2$,
+        of degree $n=[K(x^2):K]=\deg(f(x^2,K))$. Hence $(-1)^ng(X)=f(x^2,K)$.
+    \end{itemize}
+    \end{enumerate}
+\end{sol}
+
+
+
+The following lemma can be used, without proof, in the following exercise.
+
+\begin{lem*}[Gauss' Lemma]
+    Let $A$ be a unique factorization domain and $K$ be its fraction field.
+    A non-constant polynomial $f\in A[X]$ is irreducible if and only if it is primitive and irreducible in $K[X]$.
+\end{lem*}
+
+\begin{ex} [Eisenstein's irreducibility criterion]
+    Let $f=\sum_{i=0}^n a_iX^i\in \Z[X]$ be a polynomial of degree $n>0$. 
+    Assume that there exists a prime $p$ such that
+    $p\mid a_i$ for all $i\in\{0,1,\dots,n-1\}$, $p\nmid a_n$ and
+    $p^2\nmid a_0$. Then $f$ is irreducible in $\Q[X]$.
+
+    \vspace{.5cm}
+    
+    \textit{More general version}
+    
+    Let $A$ be a unique factorization domain and $K$ be its fraction field.
+    Let $f=\sum_{i=0}^n a_iX^i\in A[X]$ be a polynomial of degree $n>0$. 
+    Assume that there exists a prime element $p\in A$ such that
+    $p\mid a_i$ for all $i\in\{0,1,\dots,n-1\}$, $p\nmid a_n$ and
+    $p^2\nmid a_0$. Then $f$ is irreducible in $K[X]$. 
+\end{ex}
+
+
+
+
+\begin{ex}
+Let $\zeta\in\C$ be a primitive cubic root of one.
+Set $E=\Q[\sqrt[3]{2}]$, $F=\Q(\zeta)$ and $L=\Q[i]$.
+\begin{enumerate}[label=(\roman*)]
+    \item Prove that $[E:\Q]=3$ and $[F:\Q]=2$ and compute the minimal polynomial of $\zeta$ over $\Q$ and over $L$.
+    \item Prove that $EF=\Q(\sqrt[3]{2},\zeta)$.
+    \item Compute $[EF:\Q]$ and $[E\cap F:\Q]$.
+\end{enumerate}  
+\end{ex}
+
+\begin{ex}
+    Let $E/K$ be a field extension and let $L/K$ and $M/K$ be subextensions.
+    \begin{enumerate}[label=(\roman*)]
+    \item Prove that $[LM : K ] \cdot [L \cap M : K] \leq [L:K] \cdot [M:K]$.
+    \item Can you find examples where $[LM : K ] \cdot [L \cap M : K] < [L:K] \cdot [M:K]$?
+    
+    \noindent \textit{Hint:} Use two different roots of the polynomial $X^3 -2$.
+    \end{enumerate}  
+\end{ex}
+
+\begin{ex}
+    Let $E/K$ be a field extension and let $f \in K[X]$ be a polynomial such that $f$ factorizes in $E[X]$ as $f = \prod_{i=1}^n(x - \alpha_i)$. Prove by induction that $[K(\alpha_1,\alpha_2, \ldots, \alpha_n):K] \leq n!$.
+\end{ex}
+
+\end{document}
