@@ -1,47 +1,16 @@
 \documentclass[a4paper,10pt,reqno]{amsart}
 
-% \usepackage[left=0.5cm,top=-1.0cm,bottom=0.5cm,right=0.5cm]{geometry}
+\input{Exstuff}
 
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{mathtools}
-\usepackage{pdfpages}
-\usepackage{changes}
-\usepackage{exscale,cite,color,amsopn}
-\usepackage[colorlinks=true,pdftex,unicode=true,linktocpage,bookmarksopen,hypertexnames=true]{hyperref}
-\usepackage{aliascnt}
-\usepackage{colortbl}
-\usepackage{enumitem}
-\usepackage{verbatim}
-\usepackage{hyperref}
-\usepackage{tikz-cd}
-\usepackage[capitalise]{cleveref}
-
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\Hom}{\operatorname{Hom}}
-
-
-\makeatletter
-\newtheorem{thm}{Theorem}
-\newtheorem*{thm*}{Theorem}
-\newtheorem{lem}[thm]{Lemma}
-\newtheorem*{lem*}{Lemma}
-\newtheorem{cor}[thm]{Corollary}
-\newtheorem{pro}[thm]{Proposition}
-
-\theoremstyle{definition} % change of style
-\newtheorem{defn}[thm]{Definition}
-\newtheorem{rem}[thm]{Remark}
-%\newtheorem{exa}[thm]{Example}
 \newtheorem{ex}{Exercise}[section]
 \newenvironment{sol}
   {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
   {\end{proof}}
 
   \setlength\parindent{0pt}
+
+\usepackage{multicol}
+\usepackage{adjustbox}
 
 
 
@@ -148,7 +117,7 @@ Let $\Q[i]=\{a+ib\mid a,b\in \Q\}$, $\Q[\sqrt{2}]=\{a+\sqrt{2}b\mid a,b\in\Q\}$ 
 \begin{ex} Let $p$ be a prime number. Denote by $\binom{n}{k}$ the binomial coefficient ``$n$ over $k$".
     \begin{enumerate}[label=(\roman*)]
     \item Prove that $p$ divides $\binom{p}{k}$ for $1 \leq k \leq p-1$.
-    \item Let $K$ be a field of characteristic $p$. Show that the map $\Phi: K \to K$; $x \mapsto x^p$ is indeed a field endomorphism. This map is called the \emph{Frobenius endomorphism} of $K$.
+    \item Let $K$ be a field of characteristic $p$. Show that the map $\Phi: K \to K$; $x \mapsto x^p$ is a field endomorphism. This map is called the \emph{Frobenius endomorphism} of $K$.
 \end{enumerate}
 \end{ex}
 
@@ -173,6 +142,7 @@ Let $K$ be field.
 \end{enumerate}
     
 \end{ex}
+\newpage
 \section{Week 2}
 
 \begin{ex}
@@ -346,6 +316,9 @@ Set $E=\Q[\sqrt[3]{2}]$, $F=\Q(\zeta)$ and $L=\Q[i]$.
 \begin{ex}
     Let $E/K$ be a field extension and let $f \in K[X]$ be a polynomial such that $f$ factorizes in $E[X]$ as $f = \prod_{i=1}^n(x - \alpha_i)$. Prove by induction that $[K(\alpha_1,\alpha_2, \ldots, \alpha_n):K] \leq n!$.
 \end{ex}
+
+\newpage
+
 \section{Week 3}
 
 
@@ -582,5 +555,318 @@ Set $E=\Q[\sqrt[3]{2}]$, $F=\Q(\zeta)$ and $L=\Q[i]$.
 \begin{ex}
     Let $E/K$ be a field extension and let $f \in K[X]$ be a polynomial such that $f$ factorizes in $E[X]$ as $f = \prod_{i=1}^n(x - \alpha_i)$. Prove by induction that $[K(\alpha_1,\alpha_2, \ldots, \alpha_n):K] \leq n!$.
 \end{ex}
+
+\newpage
+\section{Week 4}
+
+
+\begin{ex}
+    Let $K$ be a field. For a polynomial $f = \sum_{k=0}^na_kX^k \in K[X]$, we define the \emph{derivative} by
+    \[
+    f' = \sum_{k=1}^n ka_kX^{k-1}.
+    \]
+    \begin{enumerate}[label=(\roman*)]
+        \item Let $\alpha \in K$ and $f,g \in K[X]$. Prove the following properties of the derivative
+        \begin{enumerate}
+            \item $(f + g)' = f' + g'$,
+            \item $(\alpha \cdot f)' = \alpha \cdot f'$,
+            \item $(f\cdot g)' = f'\cdot g + f \cdot g'$.
+        \end{enumerate}
+        \item Let $f \in K[X]$ be a polynomial that factorizes as $f = \prod_{i=1}^n (X - \alpha_i)$. Prove that the roots $\alpha_1, \ldots, \alpha_n$ are pairwise different if and only if $\gcd(f,f') = 1$.
+        \item Let $C$ be an algebraic closure of $K$ and let $f \in K[X]$ be a polynomial with $\deg(f) \geq 1$ that is irreducible over $K$. Prove that $f$ has repeated roots in $C$ if and only if $f' = 0$.  In particular, show that 
+        having such a polynomial $f$
+        implies that $\mathrm{char}(K) = p > 0$ and $f(X) = g(X^p)$ for some irreducible polynomial $g \in K[X]$.
+    \end{enumerate}
+\end{ex}
+
+\begin{sol}~
+ \begin{enumerate}[label=(\roman*)]
+        \item For sake of simplicity, write $f = \sum_{k=0}^{\infty} a_k X^k$ and $g = \sum_{k=0}^{\infty} b_kX^k$. Then
+        %\begin{enumerate}
+            %\item 
+            \begin{align*}
+            (f + g)' & 
+            =  \left(\sum_{k=0}^{\infty} (a_k + b_k) X^k \right)' 
+            = \sum_{k=1}^{\infty} k (a_k+b_k)X^{k-1} \\
+            & = \sum_{k=1}^{\infty} ka_kX^{k-1} + \sum_{k=1}^{\infty} kb_kX^{k-1} = f' + g'.
+        \end{align*}
+        Hence we have proved (a).
+        We can now prove also (b) as:
+        %\item
+        \[
+        (\alpha \cdot f)'
+        = \left(\sum_{k=0}^{\infty} \alpha a_k X^k \right)
+        = \sum_{k=1}^{\infty} k \alpha a_kX^{k-1} 
+        = \alpha \cdot \sum_{k=1}^{\infty} k a_kX^{k-1}
+        = \alpha \cdot f'.
+        \]
+        % \begin{align*}
+        %     (\alpha \cdot f)' & = \left(\sum_{k=0}^{\infty} \alpha a_k X^k \right) \\
+        %     & = \sum_{k=1}^{\infty} k \alpha a_kX^{k-1} \\
+        %     & = \alpha \cdot \sum_{k=1}^{\infty} k a_kX^{k-1} \\
+        %     & = \alpha \cdot f'.
+        % \end{align*}
+        %\item 
+        To prove (c), we first check the equality for $f = X^k$ and  $g = X^l$:
+        \[
+        (f \cdot g)' = (X^{k+l})' = (k+l)X^{k+l-1} = kX^{k-1}X^l + X^klX^{l-1} = f' \cdot g + f \cdot g'.
+        \]
+        Using the already-established $K$-linearity (i.e. (a) and (b) of this exercise), we can now calculate
+        \begin{align*}
+            (f \cdot g)' & 
+            = \left( \sum_{k,l \geq 0} a_kb_l X^{k+l} \right)' 
+            = \sum_{k,l \geq 0} a_kb_l (X^{k+l})'\\
+            &= \sum_{k,l \geq 0} a_kb_l ((X^k)'X^l + X^k(X^l)') \\
+            & = \sum_{k,l \geq 0} a_kb_l (X^k)'X^l  + \sum_{k,l \geq 0} a_kb_l X^k(X^l)' \\
+            & = \left( \sum_{k=0}^{\infty} a_kX^k \right) \cdot \left( \sum_{l=0}^{\infty} b_l(X^l)' \right) + \left( \sum_{k=0}^{\infty} a_k(X^k)' \right) \cdot \left( \sum_{l=0}^{\infty} b_lX^l \right) \\
+            & = f' \cdot g + f \cdot g'.
+        \end{align*}
+        %\end{enumerate}
+
+        \item Let $\alpha_i$ be one of the roots of $f$. Write $f = (X - \alpha_i) \cdot g$.
+        By the (i) of this exercise,
+        \[
+        f' = (X - \alpha_i)' \cdot g + (X - \alpha_i) \cdot g' = g + (X - \alpha_i) \cdot g'.
+        \]
+        Therefore, $f'(\alpha_i) = g(\alpha_i) = \prod_{j \neq i} (\alpha_i - \alpha_j)$. This implies that $f'(\alpha_i) = 0$ if and only if $\alpha_i$ is a repeated root of $f$ which is the case if and only if $(X - \alpha_i)$ is a common divisor of $f$ and $f'$.
+
+        As the linear factors $(X-\alpha_i)$ are prime elements of $K[X]$, it follows that $f$ and $f'$ have common divisors if and only if $f$ has repeated roots.
+
+        \item Let $f$ be irreducible in $K[X]$ with repeated roots in $C[X]$. By the previous exercise, $\gcd(f,f') \neq 1$. As $f$ is irreducible and $\gcd(f,f') \in K[X]$, this implies $\gcd(f,f') = f$. Therefore, $f$ divides $f'$. As $\deg(f') < \deg(f)$, this implies $f' = 0$.
+
+        In case that $f' = 0$, we write $f = \sum_{k=0}^{\infty}a_kX^k$ and consider that
+        \[
+        f' = \sum_{k=1}^{\infty} ka_kX^{k-1} = 0.
+        \]
+        Therefore, for all $k \geq 0$, we have $k = 0$ or $a_k = 0$. As there is at least one $k \geq 1$ with $a_k$ we conclude that $k = 0$ holds in $K$ for some nonzero $k$. This implies that  $\mathrm{char}(K) = p > 0$ and that $a_k = 0$ whenever $p \nmid k$. We can therefore write
+        \[
+        f = \sum_{l = 0}^{\infty} a_{pl}X^{pl} = g(X^p)
+        \]
+        with $g = \sum_{l=0}^{\infty} a_{pl}X^l$. For a decomposition $g = g_1g_2$, we  also get a decomposition $f(X) = g(X^p) = g_1(X^p)g_2(X^p)$ which implies that either $g_1(X^p)$ or $g_2(X^p)$ is in $K$, which amounts to saying that $g_1$ or $g_2$ is in $K$. Therefore, $g$ has to be irreducible.
+    \end{enumerate}
+    
+\end{sol}
+
+\begin{ex}
+    Let $L$ be a finite field.
+    \begin{enumerate}[label=(\roman*)]
+    \item Show that $L$ is not algebraically closed.
+    
+    \noindent \textit{Hint:} Consider the polynomial $f(X)=1+\prod_{l\in L} (X-l)\in L[X]$.
+    \item Show that $L$ contains a 
+    subfield $K$ isomorphic to $\Z/p$
+    (its ring of integers) and that $|L|=p^m$, where $m=[L:K]$.
+    \end{enumerate}
+    Assume now that $K=\Z/p$ and let $f(X)=X^{p^m}-X\in K[X]$.
+    Let $C$ be an algebraic closure of $K$ and set 
+    $L=\{\alpha\in C\mid f(\alpha)=0\}$.
+    Prove that
+    \begin{enumerate}
+        \item[(iii)] $|L|=p^m$
+
+        \noindent\textit{Hint:} Use the previous exercise.
+        \item[(iv)] Recall that, since $K$ has characteristic $p$, $\Phi: K \to K$; $x \mapsto x^p$ is a field endomorphism (the Frobenius endomorphism).
+        Prove that $L$ is a field and $K\subseteq L\subseteq C$.
+    \end{enumerate}
+\end{ex}
+% \begin{sol}~
+% \begin{enumerate}[label=(\roman*)]
+%     \item The polynomial $f(X)\in L[X]$ doesn't have roots in $L$.
+%     In fact consider any $a\in L$, then 
+%     \[
+%     f(a)=1+\prod_{l\in L} (a-l)=1+(a-a)\prod_{l\in L\setminus \{a\}} (X-l)=1+0=1\neq 0.
+%     \]
+%     \item Let $K$ be the ring of integers of $L$. 
+%     Since $L$ is finite, $K$ is finite too. 
+%     Hence $K$ is isomorphic to $\Z/p$ for some prime $p$.
+%     $L$ is a vector space of dimension $m$ over $K\cong\Z_p$.
+%     Let $\{x_1,x_2,\dots,x_m\}$ is a 
+%     basis of $L$ over $K$,
+%     then every element of $L$ can be 
+%     written in a unique way as a linear 
+%     combination $\sum_{i=1}^m a_ix_i$, 
+%     with $a_i\in K$.
+%     So the number of elements of $L$ is
+%     equal to the number of tuples
+%     $(a_1,\dots,a_m)\in K^m$.
+%     Hence $|L|=|K|^m=p^m$.
+%     \item If $f=X^{p^m}-X$, then $f'=p^mX^{p^m-1}-1=-1$. 
+%     So, $ \gcd(f,f')=1$ and, by the previous exercise, we can conclude 
+%     that $f$ has $p^m$ pairwise different roots in $C$, i.e. $|L|=p^m$.
+%     \item Using the Frobenius endomorphism $\Phi $ of $K$, we can see that
+%     \[
+%     L=\{\alpha\in C\mid \alpha^{p^m}=\alpha\}=\{\alpha\in C\mid \Phi^m(\alpha)=\alpha\}.
+%     \]
+%     Since $\Phi$ is an endomorphism, $\Phi^m$ is also an endomorphism.
+%     Then for all $\alpha,\beta\in L$,
+%     \[
+%     \Phi^m(\alpha+\beta)=\Phi^m(\alpha)+\Phi^m(\beta)=\alpha+\beta
+%     \]
+%     \[
+%     \Phi^m(-\alpha)=-\Phi(\alpha)=-\alpha
+%     \]
+%     \[
+%     \Phi^m(\alpha\beta)=\Phi^m(\alpha)\Phi^m(\beta)=\alpha\beta.
+%     \]
+%     \[
+%     \Phi^m(\alpha^{-1})=\big(\Phi^m(\alpha)\big)^{-1}=\alpha^{-1}.
+%     \]
+%     So $\alpha+\beta,\-\alpha,\alpha\beta,\alpha^{-1}\in L$, i.e.
+%     $L$ is a field.
+% \end{enumerate}
+% \end{sol}
+
+\begin{ex}
+Let $C/K$ be an algebraic field extension.
+Show that the following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+    \item $C$ is an algebraic closure of $K$.
+    \item For every algebraic extension $L/K$ there is an extension homomorphism $\varphi\in \Hom(L/K,C/K)$.
+\end{enumerate}  
+\noindent \textit{Hint:} For (i)$\Rightarrow$(ii) use Proposition 3.6 in the notes.
+\end{ex}
+
+
+
+
+
+\begin{ex}
+    Let $f\in K[X]$ be a polynomial of degree $n$.
+    Let $C$ be an algebraic closure of $K$ and $A=\{\alpha_1,\dots\alpha_k\}\subseteq C$ be the distinct roots of $f$ in $C.$
+    We know that $E=K(\alpha_1,\dots,\alpha_k)$ is the decomposition field of $f$ over $K$.
+    \begin{enumerate}[label=(\roman*)]
+    \item Prove that $[E:K]\leq n! $.
+    \item Prove that there is an injective homomorphism $\Gal(E/K)\longrightarrow \Sym_{A}\cong \Sym_k$ 
+    
+    \noindent\textit{Hint: } Prove that $\sigma(A)=A$ for every $\sigma \in \Gal(E/K)$.
+    \item For $K=\Z/3$ and $f=X^3-X-1$, compute $[E:K]$ and $\Gal(E/K)$.
+    (Observe that in this case $[E:K]<n!$.)
+    \end{enumerate}
+\end{ex}
+% \begin{sol}
+% \begin{enumerate}[label=(\roman*)]
+%     \item If $n = 0$, the polynomial $f$ is a nonzero constant. Therefore, $A = \emptyset$ and $E = K$. In this case, $[E:K] = [K:K] = 1 = 0!$.
+
+%     Suppose that we have proven that $[F:L] \leq n!$ whenever $F$ is the decomposition field of a polynomial $g \in L[X]$ with $\deg(g) = n$.
+    
+%     We assume now that $f \in K[X]$ has $\deg(f) = n+1$. Denote the decomposition field of $f$ over $K$ by $E$. Let $\alpha$ be a root of $f$.
+
+%     As $f(\alpha) = 0$ we know that $f(\alpha,K)| f$. Therefore,
+%     \[
+%     [K(\alpha):K] = \deg(f(\alpha,K)) \leq \deg(f) = n+1.
+%     \]
+%     As $\alpha \in K(\alpha)$, we conclude that $g = \frac{f}{X-\alpha} \in K(\alpha)[X]$. Furthermore, $E$ is the decomposition field of $g$ over $K$: if $A$ is the set of roots of $g$, then $A \cup \{\alpha \}$ is the set of roots of $f$. Therefore, $E = K(A \cup \{ \alpha \}) = K(\alpha)(A)$.
+    
+%     As $\deg(g) = n$, we can apply the inductive hypothesis and infer that
+%     \[
+%     [E:K] = [E:K(\alpha)] \cdot [K(\alpha):K] \leq (n+1) \cdot n! = (n+1)!.
+%     \]
+%     \item Let $\alpha \in A$ and $\sigma \in \Gal(E/K)$, then
+%     \[
+%     f(\sigma(\alpha)) = \overline{\sigma}(f) (\sigma(\alpha)) = \sigma(f(\alpha)) = \sigma(0) = 0.
+%     \]
+%     Therefore, $\sigma(\alpha) \in A$. As a consequence, $\sigma(A) = A$ for all $\sigma \in \Gal(E/K)$.
+%     Therefore the restriction
+%     \begin{align*}
+%     \gamma: \Gal(E/K) & \to \Sym_A \\
+%     \sigma & \mapsto \sigma |_A
+%     \end{align*}
+%     is well-defined and, as the restriction of a group action, indeed a homomorphism. As $E$ is generated by $A$ over $K$, an automorphism $\sigma \in \Gal(E/K)$ is uniquely determined by its action on $A$. We conclude that $\gamma$ is injective.
+%     \item Let $\alpha$ be a root of $f$. As $f = X(X-1)(X+1) -1$, the fact that $\mathrm{char}(K) = 3$ implies that $\alpha + k$ is a root of $f$ for any $k \in \Z/3$. Looking at the degree, this implies that these are in fact all roots of $f$.
+
+%     Note that $f(k) = -1$ for all $k \in K$ which implies that $f$ has no roots in $K$. A reducible polynomial of degree $3$ always has roots, therefore $f$ has to be irreducible.
+
+%     It follows that $f = f(\alpha,K)$ and $[K(\alpha):K] = 3$. As all roots $\alpha + k \in K(\alpha)$ for $k \in K$, we conclude that $E = K(\alpha)$. Therefore $[E:K] = 3$.
+
+%     By the same argument as in the proof of Theorem 4.10, there is for each $k \in K$ a unique $\phi \in \Hom(E/K,E/K)$ with $\phi(\alpha) = \phi(\alpha+k)$. This shows that $\Gal(E/K) \cong \Z/3$.
+%     \end{enumerate}
+    
+% \end{sol}
+
+
+
+\begin{ex}
+    Let $f=X^4-5X^2+5\in \Q[X]$ and $E$ be a decomposition field of $f$ over $\Q$. 
+    Prove that $[E:\Q]=4$. 
+
+    \textit{Hint:}
+    Given $\alpha,\beta\in \C$
+    two solutions of $f$ such that $\beta\neq-\alpha$,
+    compute $\alpha\beta$.
+    Prove also that $E=\Q(\alpha)$.
+\end{ex}
+% \begin{sol}
+% Note that, since $f$ is an even polynomial
+% if $\alpha\in \C$ is a root of $f$,
+% then also $-\alpha$ is a root of $f$.
+% Hence, given two roots $\alpha,\beta\in \C$
+% such that $\beta\neq-\alpha$,
+% we have that $E=\Q(\alpha,-\alpha,\beta,-\beta)$.
+% But $-\alpha,-\beta\in \Q(\alpha,\beta)\subseteq E$
+% and so 
+% \[
+% E=\Q(\alpha,-\alpha,\beta,-\beta)\subseteq \Q(\alpha,\beta)\subseteq\Q(\alpha,-\alpha,\beta,-\beta)=E,
+% \]
+% which means that $E=\Q(\alpha,\beta)$.
+% Moreover we can decompose $f$ in $\C[X]$ as 
+% \[
+% (X-\alpha)(X+\alpha)(X-\beta)(X+\beta)=(X^2-\alpha^2)(X^2-\beta^2)=X^4-(\alpha^2+\beta^2)X^2+\alpha^2\beta^2.
+% \]
+% This implies in particular that $\alpha^2\beta^2=5$, hence $\beta=\pm \frac{\sqrt{5}}{\alpha}\in \Q(\alpha,\sqrt{5})$.
+% Therefore $E=\Q(\alpha,\beta)\subseteq \Q(\alpha,\sqrt{5})$.
+% On the other hand $\sqrt{5}=\pm\alpha\beta\in\Q(\alpha,\beta)$,
+% hence $\Q(\alpha,\sqrt{5})\subseteq\Q(\alpha,\beta)=E$.
+% So we can conclude that $E=\Q(\alpha,\sqrt{5})$.
+% Using the multiplicative of the degree of finite extension we get that
+% \[
+% [E:\Q]=[E:\Q(\alpha)][\Q(\alpha):\Q].
+% \]
+% But $[\Q(\alpha):\Q]$ is equal to the degree of the minimal
+% polynomial of $\alpha$ over $\Q$.
+% Using Eisenstein criterion with $p=5$, we have that $f$ is irreducible (and monic), so it is the minimal polynomial of $\alpha$ over $\Q$.
+% Thus $[\Q(\alpha):\Q]=\deg f=4$.
+% It remains to compute $[E:\Q(\alpha)]=[\Q(\alpha,\sqrt{5}):\Q(\alpha)]$.
+% We have the following situation:
+% \begin{multicols}{2}
+% \adjustbox{scale=.98,center}{%
+% \begin{tikzcd}
+% 	& {E=\Q(\alpha,\sqrt{5})}\arrow[rd,no head]\\
+% 	{\Q(\alpha)}\arrow[ru,no head,"\leq 2"]&& {\Q(\sqrt{5})}\arrow[ld,no head,"2"]  \\
+% 	& {\Q}\arrow[lu,no head,"4"] 
+% \end{tikzcd}
+% }
+% \vfill\null
+% \columnbreak
+% Observe that $\Q(\alpha,\sqrt{5})$ is equal to the composite of $\Q(\alpha)$ and $\Q(\sqrt{5})$.
+% We can use the property of composite extension,
+% $[LF:L]\leq[F:K]$, to deduce that 
+% \[
+% [\Q(\alpha,\sqrt{5}):\Q(\alpha)]\leq [\Q(\sqrt{5}):\Q]=2.
+% \]
+% The last equality is because $X^2-5$ is 
+% the minimal polynomial of $\sqrt{5}$ over $\Q$,
+% as it is monic has $\sqrt{5}$ as a root 
+% and it's irreducible due to Eisenstein's criterion.
+% \end{multicols}
+% Finally, we want to understand whether $[\Q(\alpha,\sqrt{5}):\Q(\alpha)]$ is 1 or 2.
+% For this, we need to understand the relation between $\alpha$ and $\sqrt{5}$.
+% Note that $\alpha^4-5\alpha^2+5=0$, so we can solve the equation for
+% $\alpha^2$ as it is a root of $X^2-5X+5$, i.e.
+% \[
+% \alpha^2=\frac{5\pm \sqrt{25-20}}{2}=\frac{5\pm \sqrt{5}}{2},
+% \]
+% hence $\sqrt{5}=\pm (2\alpha^2-5)\in\Q(\alpha)$.
+% So $\Q(\alpha,\sqrt{5})\subseteq\Q(\alpha)\subseteq \Q(\alpha,\sqrt{5})$, 
+% which means that $E=\Q(\alpha)$ and
+% $[E:\Q]=[\Q(\alpha):\Q]=4$.
+% \end{sol}
+
+
+
+
+
+
+
+
 
 \end{document}
