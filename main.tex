@@ -678,7 +678,7 @@ Set $E=\Q[\sqrt[3]{2}]$, $F=\Q(\zeta)$ and $L=\Q[i]$.
     \item Let $K$ be the ring of integers of $L$. 
     Since $L$ is finite, $K$ is finite too. 
     Hence $K$ is isomorphic to $\Z/p$ for some prime $p$.
-    $L$ is a vector space of dimension $m$ over $K\cong\Z_p$.
+    $L$ is a vector space of dimension $m$ over $K\cong\Z/p$.
     Let $\{x_1,x_2,\dots,x_m\}$ is a 
     basis of $L$ over $K$,
     then every element of $L$ can be 
@@ -877,71 +877,71 @@ the roots of $f$ are products of $\sqrt[3]{2}$ and $\xi$, elements in $\Q(\sqrt[
     Prove also that $E=\Q(\alpha)$.
 \end{ex}
 
-% \begin{sol}
-% Note that, since $f$ is an even polynomial
-% if $\alpha\in \C$ is a root of $f$,
-% then also $-\alpha$ is a root of $f$.
-%  Hence, given two roots $\alpha,\beta\in \C$
-%  such that $\beta\neq-\alpha$,
-% we have that $E=\Q(\alpha,-\alpha,\beta,-\beta)$.
-%  But $-\alpha,-\beta\in \Q(\alpha,\beta)\subseteq E$
-%  and so 
-% \[
-%  E=\Q(\alpha,-\alpha,\beta,-\beta)\subseteq \Q(\alpha,\beta)\subseteq\Q(\alpha,-\alpha,\beta,-\beta)=E,
-%  \]
-%  which means that $E=\Q(\alpha,\beta)$.
-%  Moreover we can decompose $f$ in $\C[X]$ as 
-%  \[
-%  (X-\alpha)(X+\alpha)(X-\beta)(X+\beta)=(X^2-\alpha^2)(X^2-\beta^2)=X^4-(\alpha^2+\beta^2)X^2+\alpha^2\beta^2.
-%  \]
-% This implies in particular that $\alpha^2\beta^2=5$, hence $\beta=\pm \frac{\sqrt{5}}{\alpha}\in \Q(\alpha,\sqrt{5})$.
-% Therefore $E=\Q(\alpha,\beta)\subseteq \Q(\alpha,\sqrt{5})$.
-% On the other hand $\sqrt{5}=\pm\alpha\beta\in\Q(\alpha,\beta)$,
-%  hence $\Q(\alpha,\sqrt{5})\subseteq\Q(\alpha,\beta)=E$.
-%  So we can conclude that $E=\Q(\alpha,\sqrt{5})$.
-% Using the multiplicative of the degree of finite extension we get that
-%  \[
-%  [E:\Q]=[E:\Q(\alpha)][\Q(\alpha):\Q].
-% \]
-% But $[\Q(\alpha):\Q]$ is equal to the degree of the minimal
-% polynomial of $\alpha$ over $\Q$.
-%  Using Eisenstein criterion with $p=5$, we have that $f$ is irreducible (and monic), so it is the minimal polynomial of $\alpha$ over $\Q$.
-% Thus $[\Q(\alpha):\Q]=\deg f=4$.
-% It remains to compute $[E:\Q(\alpha)]=[\Q(\alpha,\sqrt{5}):\Q(\alpha)]$.
-%  We have the following situation:
-% \begin{multicols}{2}
-% \adjustbox{scale=.98,center}{%
-% \begin{tikzcd}
-% 	& {E=\Q(\alpha,\sqrt{5})}\arrow[rd,no head]\\
-% 	{\Q(\alpha)}\arrow[ru,no head,"\leq 2"]&& {\Q(\sqrt{5})}\arrow[ld,no head,"2"]  \\
-% 	& {\Q}\arrow[lu,no head,"4"] 
-%  \end{tikzcd}
-%  }
-%  \vfill\null
-%  \columnbreak
-%  Observe that $\Q(\alpha,\sqrt{5})$ is equal to the composite of $\Q(\alpha)$ and $\Q(\sqrt{5})$.
-%  We can use the property of composite extension,
-% $[LF:L]\leq[F:K]$, to deduce that 
-%  \[
-%  [\Q(\alpha,\sqrt{5}):\Q(\alpha)]\leq [\Q(\sqrt{5}):\Q]=2.
-%  \]
-%  The last equality is because $X^2-5$ is 
-%  the minimal polynomial of $\sqrt{5}$ over $\Q$,
-%  as it is monic has $\sqrt{5}$ as a root 
-%  and it's irreducible due to Eisenstein's criterion.
-%  \end{multicols}
-%  Finally, we want to understand whether $[\Q(\alpha,\sqrt{5}):\Q(\alpha)]$ is 1 or 2.
-%  For this, we need to understand the relation between $\alpha$ and $\sqrt{5}$.
-% Note that $\alpha^4-5\alpha^2+5=0$, so we can solve the equation for
-% $\alpha^2$ as it is a root of $X^2-5X+5$, i.e.
-%  \[
-% \alpha^2=\frac{5\pm \sqrt{25-20}}{2}=\frac{5\pm \sqrt{5}}{2},
-%  \]
-%  hence $\sqrt{5}=\pm (2\alpha^2-5)\in\Q(\alpha)$.
-%  So $\Q(\alpha,\sqrt{5})\subseteq\Q(\alpha)\subseteq \Q(\alpha,\sqrt{5})$, 
-% which means that $E=\Q(\alpha)$ and
-% $[E:\Q]=[\Q(\alpha):\Q]=4$.
-% \end{sol}
+\begin{sol}
+Note that, since $f$ is an even polynomial
+if $\alpha\in \C$ is a root of $f$,
+then also $-\alpha$ is a root of $f$.
+ Hence, given two roots $\alpha,\beta\in \C$
+ such that $\beta\neq-\alpha$,
+we have that $E=\Q(\alpha,-\alpha,\beta,-\beta)$.
+ But $-\alpha,-\beta\in \Q(\alpha,\beta)\subseteq E$
+ and so 
+\[
+ E=\Q(\alpha,-\alpha,\beta,-\beta)\subseteq \Q(\alpha,\beta)\subseteq\Q(\alpha,-\alpha,\beta,-\beta)=E,
+ \]
+ which means that $E=\Q(\alpha,\beta)$.
+ Moreover we can decompose $f$ in $\C[X]$ as 
+ \[
+ (X-\alpha)(X+\alpha)(X-\beta)(X+\beta)=(X^2-\alpha^2)(X^2-\beta^2)=X^4-(\alpha^2+\beta^2)X^2+\alpha^2\beta^2.
+ \]
+This implies in particular that $\alpha^2\beta^2=5$, hence $\beta=\pm \frac{\sqrt{5}}{\alpha}\in \Q(\alpha,\sqrt{5})$.
+Therefore $E=\Q(\alpha,\beta)\subseteq \Q(\alpha,\sqrt{5})$.
+On the other hand $\sqrt{5}=\pm\alpha\beta\in\Q(\alpha,\beta)$,
+ hence $\Q(\alpha,\sqrt{5})\subseteq\Q(\alpha,\beta)=E$.
+ So we can conclude that $E=\Q(\alpha,\sqrt{5})$.
+Using the multiplicative of the degree of finite extension we get that
+ \[
+ [E:\Q]=[E:\Q(\alpha)][\Q(\alpha):\Q].
+\]
+But $[\Q(\alpha):\Q]$ is equal to the degree of the minimal
+polynomial of $\alpha$ over $\Q$.
+ Using Eisenstein criterion with $p=5$, we have that $f$ is irreducible (and monic), so it is the minimal polynomial of $\alpha$ over $\Q$.
+Thus $[\Q(\alpha):\Q]=\deg f=4$.
+It remains to compute $[E:\Q(\alpha)]=[\Q(\alpha,\sqrt{5}):\Q(\alpha)]$.
+ We have the following situation:
+\begin{multicols}{2}
+\adjustbox{scale=.98,center}{%
+\begin{tikzcd}
+	& {E=\Q(\alpha,\sqrt{5})}\arrow[rd,no head]\\
+	{\Q(\alpha)}\arrow[ru,no head,"\leq 2"]&& {\Q(\sqrt{5})}\arrow[ld,no head,"2"]  \\
+	& {\Q}\arrow[lu,no head,"4"] 
+ \end{tikzcd}
+ }
+ \vfill\null
+ \columnbreak
+ Observe that $\Q(\alpha,\sqrt{5})$ is equal to the composite of $\Q(\alpha)$ and $\Q(\sqrt{5})$.
+ We can use the property of composite extension,
+$[LF:L]\leq[F:K]$, to deduce that 
+ \[
+ [\Q(\alpha,\sqrt{5}):\Q(\alpha)]\leq [\Q(\sqrt{5}):\Q]=2.
+ \]
+ The last equality is because $X^2-5$ is 
+ the minimal polynomial of $\sqrt{5}$ over $\Q$,
+ as it is monic has $\sqrt{5}$ as a root 
+ and it's irreducible due to Eisenstein's criterion.
+ \end{multicols}
+ Finally, we want to understand whether $[\Q(\alpha,\sqrt{5}):\Q(\alpha)]$ is 1 or 2.
+ For this, we need to understand the relation between $\alpha$ and $\sqrt{5}$.
+Note that $\alpha^4-5\alpha^2+5=0$, so we can solve the equation for
+$\alpha^2$ as it is a root of $X^2-5X+5$, i.e.
+ \[
+\alpha^2=\frac{5\pm \sqrt{25-20}}{2}=\frac{5\pm \sqrt{5}}{2},
+ \]
+ hence $\sqrt{5}=\pm (2\alpha^2-5)\in\Q(\alpha)$.
+ So $\Q(\alpha,\sqrt{5})\subseteq\Q(\alpha)\subseteq \Q(\alpha,\sqrt{5})$, 
+which means that $E=\Q(\alpha)$ and
+$[E:\Q]=[\Q(\alpha):\Q]=4$.
+\end{sol}
 
 
 
@@ -967,43 +967,150 @@ the roots of $f$ are products of $\sqrt[3]{2}$ and $\xi$, elements in $\Q(\sqrt[
     \end{enumerate}
 \end{ex}
 
-% \begin{sol}
-%     \begin{enumerate}[label=(\roman*)]
-%         \item Note that $(\alpha - \sqrt{2})^4 -7 = 0$. By expanding the left side, we get
-%         \begin{align*}
-%             0 & \alpha^4 - 4\sqrt{2}\alpha^3 + 12 \alpha^2 - 8\sqrt{2}\alpha - 3 \\
-%             & = (\alpha^4 + 12\alpha^2 - 3) -  (4 \alpha^3 + 8 \alpha )\sqrt{2}. \\
-%             \rightarrow \quad \sqrt{2} & = \frac{\alpha^4 + 12\alpha^2 - 3}{4 \alpha^3 + 8 \alpha} \in \Q(\sqrt{2}).
-%         \end{align*}
-%         We are left with checking that $4 \alpha^3 + 8 \alpha \neq 0$. But this would only be possible for $\alpha \in \{ 0, \pm i\sqrt{2} \}$ which is not the case.
-%         \item From the definition, it is immediate that $\alpha \in \Q(\sqrt{2} , \sqrt[4]{7})$, therefore $\Q(\alpha) \subseteq \Q(\sqrt{2} , \sqrt[4]{7})$.
+\begin{sol}~
 
-%         On the other hand, the first part of the exercise shows that $\sqrt{2} \in \Q(\alpha)$. As $\sqrt[4]{7} = \alpha - \sqrt{2} \in \Q(\alpha)$, we also see that $\sqrt[4]{7} \in \Q(\alpha)$. It follows that $\Q(\sqrt{2} , \sqrt[4]{7}) \subseteq \Q(\alpha)$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Note that $(\alpha - \sqrt{2})^4 -7 = 0$. By expanding the left side, we get
+        \begin{align*}
+            0 & \alpha^4 - 4\sqrt{2}\alpha^3 + 12 \alpha^2 - 8\sqrt{2}\alpha - 3 \\
+            & = (\alpha^4 + 12\alpha^2 - 3) -  (4 \alpha^3 + 8 \alpha )\sqrt{2}. \\
+            \rightarrow \quad \sqrt{2} & = \frac{\alpha^4 + 12\alpha^2 - 3}{4 \alpha^3 + 8 \alpha} \in \Q(\sqrt{2}).
+        \end{align*}
+        We are left with checking that $4 \alpha^3 + 8 \alpha \neq 0$. But this would only be possible for $\alpha \in \{ 0, \pm i\sqrt{2} \}$ which is not the case.
+        \item From the definition, it is immediate that $\alpha \in \Q(\sqrt{2} , \sqrt[4]{7})$, therefore $\Q(\alpha) \subseteq \Q(\sqrt{2} , \sqrt[4]{7})$.
 
-%         We conclude that $\Q(\sqrt{2} , \sqrt[4]{7}) = \Q(\alpha)$.
+        On the other hand, the first part of the exercise shows that $\sqrt{2} \in \Q(\alpha)$. As $\sqrt[4]{7} = \alpha - \sqrt{2} \in \Q(\alpha)$, we also see that $\sqrt[4]{7} \in \Q(\alpha)$. It follows that $\Q(\sqrt{2} , \sqrt[4]{7}) \subseteq \Q(\alpha)$.
 
-%         \item Suppose that $\sqrt{2} \in \Q(\sqrt[4]{7})$. As $[\Q(\sqrt[4]{7}):\Q] = 4$ and $[\Q(\sqrt{2}):\Q] = 2$ this would imply that $[\Q(\sqrt[4]{7}):\Q(\sqrt{2})] = 2$. Let therefore $f(\sqrt[4]{7},\Q(\sqrt{2})) = x^2 + \beta x + \gamma$ with $\beta, \gamma \in \Q(\sqrt{2})$. 
+        We conclude that $\Q(\sqrt{2} , \sqrt[4]{7}) = \Q(\alpha)$.
+
+        \item Suppose that $\sqrt{2} \in \Q(\sqrt[4]{7})$. As $[\Q(\sqrt[4]{7}):\Q] = 4$ and $[\Q(\sqrt{2}):\Q] = 2$ this would imply that $[\Q(\sqrt[4]{7}):\Q(\sqrt{2})] = 2$. Let therefore $f(\sqrt[4]{7},\Q(\sqrt{2})) = x^2 + \beta x + \gamma$ with $\beta, \gamma \in \Q(\sqrt{2})$. 
         
-%         Evaluating $f$ at $x = \sqrt[4]{7}$ would lead to the following chain of implications:
-%         \begin{align*}
-%             \sqrt{7} + \beta \sqrt[4]{7} + \gamma & = 0 \\
-%             \beta^2 \sqrt{7}  & = (- \sqrt{7} - \gamma)^2 \\
-%             & = 7 + 2\gamma \sqrt{7}  + \gamma^2 \\
-%             \sqrt{7} & = \frac{\gamma^2 + 7}{\beta^2 - 2 \gamma} \in \Q(\sqrt{2}).
-%         \end{align*}
-%         This is a contradiction, as soon as we have justified the last step by excluding $\gamma = \frac{\beta^2}{2}$. But $x^2 + \beta x + \frac{\beta^2}{2} = 0$ holds only for $x =\frac{\beta}{2} (-1 \pm i)$ which is clearly not in $\Q(\sqrt{2})$.
+        Evaluating $f$ at $x = \sqrt[4]{7}$ would lead to the following chain of implications:
+        \begin{align*}
+            \sqrt{7} + \beta \sqrt[4]{7} + \gamma & = 0 \\
+            \beta^2 \sqrt{7}  & = (- \sqrt{7} - \gamma)^2 \\
+            & = 7 + 2\gamma \sqrt{7}  + \gamma^2 \\
+            \sqrt{7} & = \frac{\gamma^2 + 7}{\beta^2 - 2 \gamma} \in \Q(\sqrt{2}).
+        \end{align*}
+        This is a contradiction, as soon as we have justified the last step by excluding $\gamma = \frac{\beta^2}{2}$. But $x^2 + \beta x + \frac{\beta^2}{2} = 0$ holds only for $x =\frac{\beta}{2} (-1 \pm i)$ which is clearly not in $\Q(\sqrt{2})$.
 
-%         \item Recall that $\Q(\alpha) = \Q(\sqrt{2},\sqrt[4]{7})$. As $\sqrt{2} \not\in \Q(\sqrt[4]{7})$, we see that $[\Q(\alpha):\Q(\sqrt[4]{7})] > 1$. On the other hand, $\sqrt{2}$ is a zero of $x^2 - 2 \in \Q(\sqrt[4]{7})[X]$, therefore $[\Q(\alpha):\Q(\sqrt[4]{7})] \leq 2$, which proves that $[\Q(\alpha):\Q(\sqrt[4]{7})] = 2$.
+        \item Recall that $\Q(\alpha) = \Q(\sqrt{2},\sqrt[4]{7})$. As $\sqrt{2} \not\in \Q(\sqrt[4]{7})$, we see that $[\Q(\alpha):\Q(\sqrt[4]{7})] > 1$. On the other hand, $\sqrt{2}$ is a zero of $x^2 - 2 \in \Q(\sqrt[4]{7})[X]$, therefore $[\Q(\alpha):\Q(\sqrt[4]{7})] \leq 2$, which proves that $[\Q(\alpha):\Q(\sqrt[4]{7})] = 2$.
 
-%         Therefore,
-%         \[
-%         [\Q(\alpha):\Q] = [\Q(\alpha):\Q(\sqrt[4]{7})] \cdot [\Q(\sqrt[4]{7}): \Q] = 2 \cdot 4 = 8.
-%         \]
-%         \item We know that $\sqrt[4]{7} \in \Q(\alpha)$ which has minimal polynomial $f(\sqrt[4]{7},\Q) = x^4-7$. One root of this polyomial is $i\sqrt[4]{7} \not\in \Q(\alpha)$, therefore $\Q(\alpha):\Q$ is not normal.
-%     \end{enumerate}
-% \end{sol}
+        Therefore,
+        \[
+        [\Q(\alpha):\Q] = [\Q(\alpha):\Q(\sqrt[4]{7})] \cdot [\Q(\sqrt[4]{7}): \Q] = 2 \cdot 4 = 8.
+        \]
+        \item We know that $\sqrt[4]{7} \in \Q(\alpha)$ which has minimal polynomial $f(\sqrt[4]{7},\Q) = x^4-7$. One root of this polyomial is $i\sqrt[4]{7} \not\in \Q(\alpha)$, therefore $\Q(\alpha):\Q$ is not normal.
+    \end{enumerate}
+\end{sol}
 
+ \newpage
 
+\section{Week 6}
+
+\begin{ex}
+    Let $F$ be a field, we denote by $F^\times$ the group $F\setminus\{0\}$ with the field multiplication. Every finite subgroup of $F^\times$ is a cyclic group.
+    
+    Prove this statement using the following steps:
+    \begin{enumerate}[label=(\roman*)]
+        \item Let $G$ be a finite subgroup of $F^\times$. Being an abelian finite group we have that $G\cong \bigoplus_{i=1}^k \Z/{p_i^{n_i}}$,
+        where $p_i$ are not necessarily distinct primes.
+        Take $m=\lcm(p_i^{n_i}\mid i\in\{1,\dots,k\})$.
+        Prove that $x^m=1$ for all $x\in G$.
+        \item Prove that $m=\prod_{i=1}^k p_i^{n_i}$.
+        
+        \noindent\textit{Hint: }Consider the polynomial $X^m-1$. How many roots does it have?
+        \item Prove that $G$ is cyclic.
+        
+        \noindent\textit{Hint: }Show that $p_i\neq p_j$ for all $i\neq j$.
+    \end{enumerate}
+\end{ex}
+\begin{sol}
+We can assume that $G=\bigoplus_{i=1}^k \Z/{p_i^{n_i}}$.
+\begin{enumerate}[label=(\roman*)]
+    \item For every $x\in G$ we can write it as $x=(x_1,\dots, x_k)$, where $x_i\in \Z/{p_i}^{n_i}$ for every $i\in\{1,\dots,k\}$..
+    So $x_i^{p_i^{n_i}}=1$ for every $i\in\{1,\dots,k\}$.
+    Since $m$ is also a multiple of $p_i^{n_i}$, we get that $x_i^m=1$ for every $i\in\{1,\dots,k\}$.
+    Therefore $x^m=(x_1,\dots, x_k)^m=1_G$.
+    \item The polynomial $X^m-1\in K[X]$ has degree $m$, so it can have at most $m$ roots.
+    However, the previous point of this exercise shows that every element of $G$ is a root.
+    Thus $\prod_{i=1}^k p_i^{n_i}=|G|\leq m$.
+    On the other hand, clearly $m=\lcm(p_i^{n_i}\mid i\in\{1,\dots,k\})\leq \prod_{i=1}^k p_i^{n_i}$.
+    Therefore $m=\prod_{i=1}^k p_i^{n_i}$.
+    \item Since we proved that $\lcm(p_i^{n_i}\mid i\in\{1,\dots,k\})=\prod_{i=1}^k p_i^{n_i}$, we can deduce that
+    $p_i^{n_i}$ and $p_j^{n_j}$ have to be coprime whenever $i\neq j$.
+    Therefore $p_i\neq p_j$ for all $i\neq j$.
+    Moreover, since $G\cong\bigoplus_{i=1}^k \Z/{p_i^{n_i}}$, we can deduce, using the Chinese remainder theorem,
+    that $G\cong\Z/m$.\qedhere
+\end{enumerate}
+\end{sol}
+
+\begin{ex}
+   If $C$ is an algebraic closure of $K$, $x\in C$ and $G=\Gal(C/K)$. Prove that the following statements are equivalent:
+   \begin{enumerate}[label=(\roman*)]
+        \item $x$ is separable over $K$.
+        \item Every $y\in O_G(x)$ is separable over $K$.
+        \item $\gamma(K(x)/K)=[K(x):K]=\deg(f(x,K))$.
+    \end{enumerate}
+\end{ex}
+\begin{sol}
+By Proposition 4.11 of the lecture notes, we know that 
+$$f(x,K)=\prod_{y\in O_G(x)} (X-y)^m$$
+for some $m$.
+Moreover, by Proposition 4.10 of the lecture notes,
+$f(y,K)=f(x,K)$ for all $y\in O_G(x)$.
+    \begin{description}[font=\normalfont]
+        \item[(i)$\iff$(ii)] $x$ is separable over $K$ if and only if $x$ is a simple root of $f$, i.e. $m=1$.
+        Thus $x$ is separable over $K$ if and only if $y$
+        is separable over $K$ for all $y\in O_G(x)$.
+        \item[(i)$\iff$(iii)] We know already that $[K(x):K]=\deg(f(x,K))$.
+        By Proposition 5.16 of the lecture notes, we alsodhave that $\gamma(K(x)/K)=|O_G(x)|$.
+        Thus 
+        $$[K(x):K]=\deg(f(x,K))=m|O_G(x)|=\gamma(K(x)/K).$$
+        But $x$ is separable over $K$ if and only if $m=1$, i.e.
+        \[
+        [K(x):K]=\deg(f(x,K))=|O_G(x)|=\gamma(K(x)/K).\qedhere
+        \]
+    \end{description}
+\end{sol}
+
+Recall the following property.
+
+\begin{pro}
+    Let $K$ be a field and $C$ an algebraic closure of $K$. If a polynomial $f \in K[X]$ is irreducible and has repeated roots in $C$, then $K$ has positive characteristic $p > 0$ and  $f = g(X^p)$ for an irreducible polynomial $g \in K[X]$.
+\end{pro}
+
+\begin{ex}
+    Let $K$ be a field of positive characteristic $p$ and let $K(t)$ be the field of rational functions over $K$. Prove that the extension $K(t)/K(t^p)$ is inseparable.
+
+    \noindent\textit{Hint:} Use the Eisenstein criterion to prove that the polynomial $X^p-t^p$ is irreducible in $K(t^p)[X]$.
+\end{ex}
+
+\begin{sol}
+    It is clear that $K(t^p)(t) = K(t)$ and that $t$ is a root of the polynomial $f = X^p - t^p \in K(t^p)[X]$. We have to prove that $f = f(t,K(t^p))$ by showing that it is irreducible in $K(t^p)[X]$.
+
+    $K(t^p)$ is the field of fractions of the factorization domain $K[t^p]$ which we can identify with the ring $K[Y]$ by substituting $Y = t^p$. We apply Eisenstein with the prime $Y \in K[Y]$ to the monic polynomial $f = X^p - Y$: $Y | a_i$ for $i < p$ and $Y^2 \nmid Y = a_0$, hence $f$ is irreducible in $K[Y,X]$ and, thus, also in $K(Y)[X]=K(t^p)[X]$.
+
+    Note that $f = X^p - t^p = (X - t)^p$ which implies that $t$ is a repeated root of $f = f(t, K(t^p))$. This proves that $K(t)/K(t^p)$ is an inseparable extension. 
+\end{sol}
+
+\begin{ex}
+    Let $K$ be a field. Prove the equivalence of the following two statements:
+
+    \begin{enumerate}
+        \item Each algebraic extension of $K$ is separable.
+        \item \textit{Either} $K$ has characteristic $0$, \textit{or} $K$ has positive characteristic $p > 0$ and the Frobenius endomorphism $\Phi_K: K \to K$; $\Phi_K(x) = x^p$ is bijective.
+    \end{enumerate}
+
+    \noindent\textit{Hint:} The first statement is equivalent to the statement that each irreducible polynomial in $K[X]$ doesn't have repeated roots in an algebraic closure. Use the proposition to reduce the problem to the case that $K$ has positive characteristic $p$.
+
+    In this case, use the fact that $(K[X])^p = \Phi_K(K)[X^p]$ to show that if $\Phi_K(K) = K$ then there are no irreducible polynomials of the form $g(X^p)$ in $K[X]$. On the other hand, if $\Phi_K(K) \neq K$, let $b \in K \setminus \Phi_K(K)$ and prove that the polynomial $X^p - b$ is irreducible in $K[X]$.
+    
+\end{ex}
+
+\begin{sol}
+...
+\end{sol}
 
 
 
