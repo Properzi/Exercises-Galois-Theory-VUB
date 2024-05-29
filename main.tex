@@ -71,6 +71,43 @@ Let $\Q[i]=\{a+ib\mid a,b\in \Q\}$, $\Q[\sqrt{2}]=\{a+\sqrt{2}b\mid a,b\in\Q\}$ 
     \item Prove that $\Q(i)$ and $\Q(\sqrt{2})$ are not isomorphic.
 \end{enumerate}
 \end{ex}
+\begin{sol}~
+\begin{enumerate}[label=(\roman*)]
+    \item Clearly for every field extension $L/K$ and 
+    every $\alpha\in L$ we have that
+    $K[\sqrt{2}]\subseteq K(\alpha)$.
+
+    Vice versa take $\frac{a+\sqrt{2}b}{c+\sqrt{2}d}\in \Q(\sqrt{2})$,
+    then we can write:
+    \[
+    \frac{a+\sqrt{2}b}{c+\sqrt{2}d}=\frac{(a+\sqrt{2}b)(c-\sqrt{2}d)}{(c+\sqrt{2}d)(c-\sqrt{2}d)}=
+    \frac{ac-2bd+(bc-ad)\sqrt{2}}{c^2-2d^2}.
+    \]
+    Hence
+    \[
+    \frac{a+\sqrt{2}b}{c+\sqrt{2}d}=\frac{ac-2bd}{c^2-2d^2}+\frac{bc-ad}{c^2-2d^2}\sqrt{2}\in \Q[\sqrt{2}].
+    \]
+    In a similar way, given $\frac{a+ib}{c+id}\in \Q(i)$,
+    we can write it as
+    \[
+    \frac{a+ib}{c+id}=\frac{ac+bd}{c^2+d^2}+\frac{bc-ad}{c^2+d^2}i\in \Q[i].
+    \]
+    \item Assume that $\Q(i)$ and $\Q(\sqrt{2})$ were isomorphic 
+    and let $\varphi:\Q(i)\to \Q(\sqrt{2})$
+    be a field isomorphism.
+    Then 
+    \[
+    \varphi(i)^2=
+    \varphi(i^2)=
+    \varphi(-1)=
+    -\varphi(1)=-1.
+    \]
+    But $\varphi(i)\in\Q(\sqrt{2})$ and,
+    using the previous part of the exercise,
+    $\Q(\sqrt{2})\subseteq \R$ where every square is positive, a contradiction.\qedhere
+\end{enumerate}
+    
+\end{sol}
 
 \begin{ex}
 \label{1.4}~
@@ -126,6 +163,34 @@ Let $p$ be a prime number. Denote by $\binom{n}{k}$ the binomial coefficient ``$
 \end{enumerate}
 \end{ex}
 
+\begin{sol}~
+
+    \begin{enumerate}[label=(\roman*)]
+        \item Note that $p \nmid i$ for $1 \leq i \leq p-1$, therefore $p \nmid 1 \cdot 2 \ldots \cdot k = k!$ for $k \leq p$. If $k \geq 1$, then $p \nmid (p-k)!$ for the same reason.
+
+        We have $\binom{p}{k} = \frac{p!}{k!(p-k)!}$ which can also be written as
+        \[
+        p! = \binom{p}{k} \cdot k! \cdot (p-k)!
+        \]
+        If $1 \leq k \leq p-1$, then $p|p!$, so $p$ has to divide at least one factor on the right side. As $p \nmid k!,(p-k)!$, it follows that $p | \binom{p}{k}$.
+
+        \item Clearly, $\Phi(1) = 1^p = 1$. As $K$ is commutative under multiplication, we see for arbitrary $x,y \in K$ that
+        \[
+        \Phi(xy) = (xy)^p = x^py^p = \Phi(x) \Phi(y).
+        \]
+        Furthermore,
+        \begin{align*}
+            \Phi(x+y) & = (x+y)^p \\
+            & = \sum_{k=0}^p \binom{p}{k}x^py^{p-k} \\
+            & = x^p + y^p + \sum_{k=1}^{p-1} \underbrace{\binom{p}{k}}_{=0}x^ky^{p-k} \\
+            & = x^p + y^p = \Phi(x) + \Phi(y).
+        \end{align*}
+        Note that $\binom{p}{k} = 0$ for $1 \leq k \leq p-1$ follows from the divisibility $p | \binom{p}{k}$ proven in the previous part.
+
+        Therefore, $\Phi$ is a field homomorphism.
+    \end{enumerate}
+\end{sol}
+
 \begin{ex}
 \label{1.6}
     Let $L/K$ be a field extension and let $M$ be a subring of $L$ that contains $K$. Suppose that $\dim_KM < \infty$.
@@ -139,6 +204,37 @@ Let $p$ be a prime number. Denote by $\binom{n}{k}$ the binomial coefficient ``$
         \noindent \textit{Hint:} For any $0 \neq \alpha \in K$, let $f \in \Q[X]$ be a nonzero polynomial with $f(\alpha) = 0$ whose degree is as small as possible. If $f = \sum_{i=0}^{\infty} a_iX^i$, prove that $a_0 \neq 0$ and use this to construct an inverse of $\alpha$ that lies in $M$.
     \end{enumerate}
 \end{ex}
+
+\begin{sol}
+    \begin{enumerate}[label=(\roman*)]
+        \item Let $n = \dim_KM$, then $\alpha^0,\alpha^1 \ldots, \alpha^n$ are linearly dependent over $K$, so there are $a_i \in K$ ($0 \leq i \leq n$), not all $a_i = 0$, such that
+        \[
+        \sum_{i=0}^n a_i \alpha^i = 0.
+        \]
+        Using those $a_i$, define the polynomial $f = \sum_{i=0}^n a_iX^i$. By choice of the $a_i$'s, we have $f \neq 0$ and
+        \[
+        f(\alpha) = \sum_{i=0}^n a_i \alpha^i = 0.
+        \]
+        \item Let $\alpha \neq 0$. We have to show that $\alpha^{-1} \in K$. Choose $0 \neq f \in K[X]$ with $f(\alpha) = 0$ such that $n= \deg f$ is as small as possible. Write $f = \sum_{i=0}^na_iX^i$, then, by minimality of $n$, $a_n \neq 0$. We show that $a_0 \neq 0$: suppose otherwise, then
+        \begin{align*}
+            f & = \sum_{i=1}^na_iX^i  
+             = X \cdot \sum_{i=0}^{n-1}a_{i+1}X^i
+             =: X \cdot g \\
+            \Rightarrow 0 & = f(\alpha) = \alpha \cdot g(\alpha)\\
+            \overset{\alpha \neq 0}{\Rightarrow} g(\alpha) & = 0.
+        \end{align*}
+        But then $g(\alpha) = 0$, and $\deg g < \deg f$, contradicting the minimality of $n$!
+
+        Therefore, $a_0 \neq 0$, and we can rewrite
+        \begin{align*}
+            \sum_{i=0}^n a_i \alpha^i & = 0 \\
+           \Rightarrow \sum_{i=1}^n a_i \alpha^i & = -a_0 \\
+           \Rightarrow \alpha \cdot  \sum_{i=0}^{n-1} a_{i+1} \alpha^i & = -a_0 \\
+           \Rightarrow \alpha^{-1} = -a_0^{-1} \cdot \sum_{i=0}^{n-1} a_{i+1} \alpha^i & \in M.
+        \end{align*}
+        The inclusion in $M$ follows from the fact that $M$ contains $K$ and $\alpha$ and is closed under multiplication and addition.
+    \end{enumerate}
+\end{sol}
 
 \begin{ex}
 \label{1.7}
@@ -285,6 +381,73 @@ Let $K$ be field.
         \item Find a polynomial $f \in \Q[X]$ such that $\deg(f) \leq 6$ and $f(\sqrt[3]{3} + \sqrt{5})$.
     \end{enumerate}
 \end{ex}
+\begin{sol}~
+
+\begin{enumerate}
+    \item We know that 
+    $\{b^j\mid 1\leq j\leq n\}$ is a 
+    $K$-basis of $K(b)$, so it also generates
+    $K[a,b]=(K[a])[b]=(K(a))[b]$ as a $K(a)$-vector space.
+    Now let $x\in K[a,b]$, then we can write it as
+    \[
+    x=
+    \sum_{j=1}^n \alpha_j b^j,
+    \]
+    for some $\alpha_j\in K(a)$.
+    Moreover $\{a^i\mid 1\leq i\leq m\}$ is a 
+    $K$-basis of $K(a)$, hence for every $j$,
+    \[
+    \alpha_j=\sum_{i=1}^m k_{i,j} a^i,
+    \]
+    for some $k_{i,j}\in \Q$.
+    Putting everything together we get
+    \[
+    x=
+    \sum_{j=1}^n \alpha_j b^j=
+    \sum_{j=1}^n \sum_{i=1}^m k_{i,j} a^i b^j,
+    \]
+    so $\{a^ib^j\mid 1 \leq i \leq m, 1 \leq j \leq n\}$
+    generates $K[a,b]$ as a $K$ vector space.
+    \item We know that $K(a)/K$ is finite and that $K(b)/K$ is finite, so also $K(a)(b)/K$ is finite.
+    Therefore, considering the tower of extension 
+    $K\subseteq K(a)\subseteq K(a)(b)=K(a,b)$,
+    we get that $K(a,b)/K$ is a finite extension, hence 
+    also algebraic.
+    Therefore $a+b,ab\in K(a,b)$ are algebraic over $K$.
+    \item Let $g(X)=X^3-3\in\Q[X]$. 
+    Then $g(\sqrt[3]{3})=0$, hence we can use the 
+    ``conjugation'' trick and consider the polynomial 
+    $f(X)=g(X-\sqrt{5})g(X+\sqrt{5})$, which has 
+    degree 6 and $f(\sqrt[3]{3} + \sqrt{5})=0$.
+    \begin{align*}
+        f(X)=&g(X-\sqrt{5})g(X+\sqrt{5})=
+        ((X-\sqrt{5})^3-3)((X+\sqrt{5})^3-3)=\\
+        &(X-\sqrt{5})^3(X+\sqrt{5})^3-3((X-\sqrt{5})^3+(X+\sqrt{5})^3)+9
+        %&((X-\sqrt{5})(X+\sqrt{5}))^3-
+        %3((X-\sqrt{5}+X+\sqrt{5})((X-\sqrt{5})^2
+        %-(X-\sqrt{5})(X+\sqrt{5})+(X+\sqrt{5})^2)+9=\\
+        %&((X-\sqrt{5})(X+\sqrt{5}))^3-
+        %3((X-\sqrt{5}+X+\sqrt{5})((X-\sqrt{5})^2
+        %-(X-\sqrt{5})(X+\sqrt{5})+(X+\sqrt{5})^2)+9=
+    \end{align*}
+    But we can compute 
+    \begin{align*}
+        (X-&\sqrt{5})^3+(X+\sqrt{5})^3=\\
+        &(X-\sqrt{5}+X+\sqrt{5})((X-\sqrt{5})^2
+        -(X-\sqrt{5})(X+\sqrt{5})+(X+\sqrt{5})^2)=\\
+        &2X((X-\sqrt{5})(X-\sqrt{5}-X-\sqrt{5})+X^2+2\sqrt{5}X+5)=\\
+        &2X(-2\sqrt{5}(X-\sqrt{5})+X^2+2\sqrt{5}X+5)=\\
+        &2X(10+X^2+5)=2X^3+30X.
+    \end{align*}
+    Therefore 
+    \begin{align*}
+        f(X)=&
+        (X^2-5)^3-3(2X^3+30X)+9=\\
+        &X^6-15X^4+75X^2-125-6X^3-90X+9=\\
+        &X^6-15X^4-6X^3+75X^2-90X-116.\qedhere
+    \end{align*}
+\end{enumerate}   
+\end{sol}
 
 The following lemma can be used, without proof, in the following exercise.
 
@@ -312,6 +475,9 @@ Set $E=\Q[\sqrt[3]{2}]$, $F=\Q(\zeta)$ and $L=\Q[i]$.
     \item Compute $[EF:\Q]$ and $[E\cap F:\Q]$.
 \end{enumerate}  
 \end{ex}
+\begin{sol}
+    See \cref{3.4}
+\end{sol}
 
 \begin{ex}\label{2.5}
     Let $E/K$ be a field extension and let $L/K$ and $M/K$ be subextensions.
@@ -322,11 +488,17 @@ Set $E=\Q[\sqrt[3]{2}]$, $F=\Q(\zeta)$ and $L=\Q[i]$.
     \noindent \textit{Hint:} Use two different roots of the polynomial $X^3 -2$.
     \end{enumerate}  
 \end{ex}
+\begin{sol}
+    See \cref{3.5}
+\end{sol}
 
 \begin{ex}
 \label{2.6}
     Let $E/K$ be a field extension and let $f \in K[X]$ be a polynomial such that $f$ factorizes in $E[X]$ as $f = \prod_{i=1}^n(x - \alpha_i)$. Prove by induction that $[K(\alpha_1,\alpha_2, \ldots, \alpha_n):K] \leq n!$.
 \end{ex}
+\begin{sol}
+    See \cref{3.6}
+\end{sol}
 
 \newpage
 
@@ -556,6 +728,79 @@ Set $E=\Q[\sqrt[3]{2}]$, $F=\Q(\zeta)$ and $L=\Q[i]$.
     \item Compute $[EF:\Q]$ and $[E\cap F:\Q]$.
 \end{enumerate}  
 \end{ex}
+\begin{sol}~
+ \begin{enumerate}[label=(\roman*)]
+    \item We know that $[E:\Q]$ is the same as
+    the degree of the minimal polynomial of $\sqrt[3]{2}$
+    over $\Q$.
+    Clearly $\sqrt[3]{2}$ is a root of $X^3-2\in\Q[X]$.
+    Moreover, by Eisenstein's criterion (\cref{3.3}) with
+    $p=2$, we get that $X^3-2$ is irreducible in $\Q[X]$.
+    Hence $f(\sqrt[3]{2},\Q)=X^3-2$ and $[E:\Q]=3$.
+
+    We also know that $\xi$ is a 
+    (non-rational) root of $X^3-1=(X-1)(X^2+X+1)$.
+    But $X^2+X+1$ has no rational roots and it has degree
+    2, so it is irreducible in $\Q[X]$ and it is
+    the minimal polynomial of $\xi$ over $\Q$.
+    Therefore 
+    $$[F:\Q]=\deg(f(\xi,\Q))\deg(X^2+X+1)=2.$$
+    \item By definition $EF=\Q(E\cup F)$, which clearly 
+    $EF$ contains $\Q, \sqrt[3]{2}$ and $ \xi$, so 
+    $EF\supseteq \Q(\sqrt[3]{2},\xi)$.
+    Moreover, every element $x$ in $EF=\Q(E\cup F)$ 
+    is a $\Q$-linear combination
+    \[
+    x=\sum_{i=0}^n a_i e_i +\sum_{j=0}^m b_j f_j,
+    \]
+    where $a_i,b_j\in\Q$, $e_i\in E$ and $f_j\in F$
+    for all $i,j$.
+    In addition, $E$ is a $\Q$-vector space with basis
+    $\{1,\sqrt[3]{2},\sqrt[3]{4}\}$, so for every $i$,
+    \[
+    e_i=e_{i,1}+e_{i,2}\sqrt[3]{2}+e_{i,3}\sqrt[3]{4},
+    \]
+    for some $e_{i,1}, e_{i,2}, e_{i,3}\in\Q$.    
+    On the other hand, $F$ is $\Q$-vector space with 
+    basis $1, \xi, \xi^2$, so for every $j$,
+    \[
+    f_j=f_{j,1}+f_{j,2}\xi,
+    \]
+    for some $f_{j,1}, f_{j,2}\in\Q$.
+    Finally, 
+    
+    $$x=\sum_{i=0}^n a_i \big(e_{i,1}+e_{i,2}\sqrt[3]{2}+e_{i,3}\sqrt[3]{4}\big) +\sum_{j=0}^m b_j \big(f_{j,1}+f_{j,2}\xi\big)\in \Q(\sqrt[3]{2},\xi).$$
+    Thus we also have the other inclusion $EF\subseteq \Q(\sqrt[3]{2},\xi)$.
+    \item We are in the following situation:
+    \
+    \begin{center}
+        \begin{tikzcd}
+	& {EF=\Q(\sqrt[3]{2},\xi)}\arrow[rd,no head]\\
+	{E=\Q(\sqrt[3]{2})}\arrow[ru,no head,"\leq 2"]&& {F=\Q(\xi)}\arrow[ldd,no head,"2"]  \\
+	& {E\cap F}\arrow[lu,no head] \arrow[ru,no head,"\leq 2"]\\
+	& {\Q}\arrow[luu,no head,"3"]\arrow[u,no head]
+ \end{tikzcd}
+    \end{center}
+    so on the one hand we know that
+    \[
+    [EF:\Q]=[EF:E][E:\Q]=[EF:E]2
+    \]
+    and on the other hand, we know that
+    \[
+    [EF:\Q]=[EF:F][F:\Q]=[EF:F]3\leq 2\cdot 3=6.
+    \]
+    Therefore $2$ and $3$ divide $[EF:\Q]\leq 6$.
+    Hence the only possibility is that $[EF:\Q]=6$.
+
+    %The fact that $[EF:\Q]=6$ also implies that 
+    %$[EF:F]=3$ and $[EF:E]=2$.
+    The intersection $E\cap F$ is contained in $E$,
+    which is contained in $\R$, while $\xi\notin\R$.
+    Therefore $[F:E\cap F]>1$, since $\xi\in F\setminus E\cap F$  but we also know that $[F:E\cap F]\leq [F:\Q]=2$.
+    Hence $[F:E\cap F]=2$, which means that $E\cap F=\Q$
+    and so $[E\cap F:\Q]=1$.\qedhere    
+\end{enumerate}
+\end{sol}
 
 \begin{ex}
 \label{3.5}
@@ -568,10 +813,72 @@ Set $E=\Q[\sqrt[3]{2}]$, $F=\Q(\zeta)$ and $L=\Q[i]$.
     \end{enumerate}  
 \end{ex}
 
+\begin{sol}
+    \begin{enumerate}[label=(\roman*)]
+    \item Considering the extensions $L/(L \cap M)$, $M/(L \cap M)$, \cref{2.2} implies that
+    \[
+    [LM:L \cap M] \leq [L:L \cap M] \cdot [M:L \cap M].
+    \]
+    Multiplying by $[L \cap M:K]^2$, we get
+    \begin{align*}
+        [LM:L \cap M] \cdot [L \cap M:K] \cdot [L \cap M:K] & \leq [L:L \cap M] \cdot [L \cap M:K] \cdot [M:L \cap M] \cdot [L \cap M:K] \\
+        \Rightarrow [LM:K] \cdot [L \cap M:K] & \leq [L:K] \cdot [M:K].
+    \end{align*}
+    \item We consider $\alpha = \sqrt[3]{2}$ and $\beta = \omega \sqrt[3]{2}$, where $\omega \neq 1$ is a primitive root of unity. $\alpha$ and $\beta$ are different roots of the irreducible polynomial $X^3-2$. As $f(\alpha,\Q) = f(\beta,\Q) = 3$, it follows that $[\Q(\alpha):\Q] = [\Q(\beta):\Q] = 3$.
+
+    Note that
+    \[
+    E := \Q(\alpha)\cdot \Q(\beta) = \Q(\alpha,\beta) = \Q(\omega, \sqrt[3]{2}).
+    \]
+    Expressing $\omega = -\frac{1}{2} \pm \frac{i}{2}\sqrt{3}$, we see that $[\Q(\omega):\Q] = 2$. On the other hand, $[\Q(\sqrt[3]{2}):\Q] = 3$. As $\Q(\sqrt[3]{2}),\Q(\sqrt[3]{2}) \subseteq E$, it follows that $2,3$ divide $[E:\Q]$ which implies that $6$ divides $[E:\Q]$. On the other hand, as
+    \[
+    [E:\Q] \leq [\Q(\omega):\Q] \cdot [\Q(\sqrt[3]{2}):\Q] = 2 \cdot 3 = 6,
+    \]
+    we infer that $[E:\Q] = 6$. Now considering $\Q(\alpha),\Q(\beta)$, we get $\Q(\alpha) \cap \Q(\beta) = \Q$ as $\Q(\alpha) \neq \Q(\beta)$ and $[\Q(\alpha) \cap \Q(\beta):\Q]$ must be a proper divisor of $[\Q(\alpha):\Q] = 3$, and therefore be $1$.
+
+    Putting everything together, we get:
+    \[
+    [\Q(\alpha)\Q(\beta):\Q] \cdot [\Q(\alpha) \cap \Q(\beta): \Q] = 6 \cdot 1 < 3 \cdot 3 = [\Q(\alpha):\Q] \cdot [\Q(\beta):\Q].\qedhere
+    \]
+    \end{enumerate}
+\end{sol}
+
 \begin{ex}
 \label{3.6}
     Let $E/K$ be a field extension and let $f \in K[X]$ be a polynomial such that $f$ factorizes in $E[X]$ as $f = \prod_{i=1}^n(x - \alpha_i)$. Prove by induction that $[K(\alpha_1,\alpha_2, \ldots, \alpha_n):K] \leq n!$.
 \end{ex}
+
+\begin{sol}
+
+    For sake of simplicity, we assume that $f$ is monic.
+    
+    If $n = 1$, then $f$ is a  $X - \alpha$ with $\alpha \in K$. In this case, $K(\alpha) = K$ which implies
+    \[
+    [K(\alpha):K] = [K:K] = 1 = 1!.
+    \]
+    Suppose now that the statement has been proven true over each field $K^{\prime}$ and each polynomial $g \in K^{\prime}[X]$ with $\deg g = n$. Let now be $f \in K[X]$ with
+    \[
+    f = \prod_{i=1}^{n+1 (X - \alpha_i)}
+    \]
+    and consider the extension $K(\alpha_{n+1})/K$. As $f(\alpha_{n+1},K)$ divides $f$, we see that
+    \[
+    [K(\alpha_{n+1}):K] = \deg f(\alpha_{n+1},K) \leq \deg f = n+1.
+    \]
+    Furthermore,
+    \[
+    g = \prod_{i=1}^{n} (X-\alpha_i) = \frac{f}{X-\alpha_{n+1}} \in K(\alpha_{n+1})[X],
+    \]
+    because both numerator as denominator are in $K(\alpha_{n+1})[X]$. As $\deg g = n$, the induction hypothesis tells us that
+    \[
+    [K(\alpha_1,\alpha_2, \ldots, \alpha_{n+1}):K(\alpha_{n+1})] = [K(\alpha_{n+1}(\alpha_1,\alpha_2, \ldots, \alpha_n)):K(\alpha_{n+1})] \leq n!.
+    \]
+    And it follows that
+    \begin{align*}
+    [K(\alpha_1,\alpha_2, \ldots, \alpha_{n+1}):K] & = [K(\alpha_1,\alpha_2, \ldots, \alpha_{n+1}):K(\alpha_{n+1})] \cdot [K(\alpha_{n+1}):K] \\
+    & \leq n! \cdot (n+1) = (n+1)!.
+    \end{align*}
+    This implies that the statement is also true in case that $\deg f = n+1$. By the induction principle, the statement is proven in general.
+\end{sol}
 
 \newpage
 \section{Week 4}
@@ -1137,7 +1444,23 @@ Recall the following property.
 \end{ex}
 
 \begin{sol}
-...
+We have to show that $K$ can only have inseparable extensions if and only if $K$ has positive characteristic $p$ and $\Phi_K$ isn't surjective.
+
+The existence of inseparable extensions of $K$ implies that there is an element $\alpha \in L$ for some extension $L/K$ such that $f(\alpha,K)$ has repeated roots. We know that this is only possible if $K$ has positive characteristic $p$ and $f(\alpha,K) = g(X^p)$ for some irreducible polynomial $g \in K[X]$. Suppose that $\Phi_K$ is bijective and write
+\[
+g = \sum_{i=0}^n a_iX^i
+\]
+for some $a_i \in K$. Then
+\[
+f = g(X^p) = \sum_{i=0}^n a_iX^{i\cdot p} = \sum_{i=0}^n (\Phi_K^{-1}(a_i))^pX^{i\cdot p} = \left( \underbrace{\Phi_K^{-1}(a_i)}_{=b_i}X^i \right)^p.
+\]
+As all $b_i \in K$, this shows that $f$ cannot be irreducible. Therefore, we have proven that inseparable extensions of $K$ can only exist if $\Phi_K$ isn't bijective.
+
+Suppose now that $K$ has positive characteristic $p$ and $\Phi_K$ isn't bijective. As a homomorphism of fields, $\Phi_K$ is always injective, therefore it is not surjective. Suppose that $a \not\in \mathrm{im}\ \Phi_K$. This means that $a$ is not a $p$-th power. Let $\alpha$ be a root of $f$ in an algebraic closure $\overline{K}/K$. We claim that the extension $K(\alpha)/K$ is inseparable. As $\alpha^p = a$, we see that
+\[
+f(\alpha, K) | X^p - a = X^p - \alpha^p = (X - \alpha)^p \Rightarrow f(\alpha,K) = (X- \alpha)^k \textnormal{ for some } 2 \leq k \leq p.
+\]
+Note that $\alpha \not\in K$ as $a$ is not a $p$-th power in $K$, so indeed $k \geq 2$. But this implies that $\alpha$ is a repeated root of $f(\alpha,K)$, so $L/K$ is inseparable.
 \end{sol}
 
 
@@ -1345,6 +1668,7 @@ Let $H=\{\sigma \in G\mid m(\sigma)\text{ is finite}\}$.
 \end{sol}
 
 \newpage
+
 \section{Week 8}
 
 \begin{ex}
@@ -1510,6 +1834,10 @@ S_i = \{ \pi \in \Sym_n : \pi(i) = i \}.
 
 \end{ex}
 
+\begin{sol}
+    See \cref{9.1}.
+\end{sol}
+
 \begin{ex}
 \label{8.4}
     Let $p$ be a prime and let $L$ be a field with $p^n$ elements. We know that $L$ contains $K = \Z/p$.
@@ -1523,10 +1851,15 @@ $$\Gal(L/K) = \{ \Phi^i : 0 \leq i \leq n-1 \} \cong C_n.$$
 \end{enumerate} 
 \end{ex}
 
+\begin{sol}
+    See \cref{9.2}.
+\end{sol}
 
 
 \newpage
+
 \section{Week 9}
+
 \begin{ex}
 \label{9.1}
 Let $n \geq 1$ and let $\Sym_n$ be the symmetric group over $\{1, 2, \ldots, n \}$. For $1 \leq i \leq n$, define the subgroups
@@ -1544,7 +1877,39 @@ S_i = \{ \pi \in \Sym_n : \pi(i) = i \}.
 
 \end{ex}
 \begin{sol}
-    
+\begin{enumerate}[label=(\roman*)]
+We calculate
+\begin{align*}
+    S_i & = \{ \rho \in \Sym_n : \rho(i) = i \} \\
+    & = \{ \rho \in \Sym_n : (\rho\pi^{-1})(i) = \pi^{-1}(i) \} \\
+    & = \{ \rho \in \Sym_n : (\pi\rho \pi^{-1})(i) = i \}.
+\end{align*}
+This shows that $\pi S_i \pi^{-1} = S_{\pi(i)}$. Using this, we see that
+\[
+\bigcap_{\pi \in \Sym_n} \pi S_1 \pi^{-1}  = \bigcap_{\pi \in \Sym_n} S_{\pi(1)} = \bigcap_{i=1}^n S_i
+= \{ \rho \in \Sym_n: \forall 1 \leq i \leq n : \rho(i) = i \} = \{ \mathrm{id} \}.
+\]
+\item It is easy to see that $S_1 \cong \Sym_{n-1}$, therefore $|S_1| = (n-1)!$ and $[\Sym_n:S_1] = n$.
+
+Combining this knowledge with that gained from the previous exercise, we see that $\Gal(L/K)$ contains a subgroup $H$ with $[\Gal(L/K):H] = n$ and $\bigcap_{\pi \in \Gal(L/K)} \pi H \pi^{-1} = 1$. Let $E = {}^HL$ be the corresponding intermediate field. By the Galois correspondence, we see that
+\[
+[E:K] = [\Gal(L/K):H] = n
+\]
+and
+\[
+    \Gal \left( L/ \prod_{\pi \in \Gal(L/K)} \pi(E) \right) = \bigcap_{\pi \in \Sym_n} \pi \Gal(L/E) \pi^{-1}
+    = \bigcap_{\pi \in \Sym_n} \pi H \pi^{-1} = 1.
+\]
+This implies $\prod_{\pi \in \Gal(L/K)} \pi(E) = L$.
+
+\item We know that $\mathcal{O}_{\Gal(L/K)}(x)$ is the set of roots of $f(x,K)$. If $y = \pi(x) \in \mathcal{O}_{\Gal(L/K)}(x)$, then $K(y) = \pi(K(x))$. Let $M$ be the decomposition field of $f$, then
+\begin{align*}
+    M & = K\left( y : y \in \mathcal{O}_{\Gal(L/K)}(x) \right) \\
+    & = \prod_{y \in \mathcal{O}_{\Gal(L/K)}(x)}K(y) \\
+    & = \prod_{\pi \in \Gal(L/K)} \pi(K(x)) \\
+    & = \prod_{\pi \in \Gal(L/K)} \pi(E) = L.
+\end{align*}
+\end{enumerate}
 \end{sol}
 
 \begin{ex}
@@ -1557,6 +1922,66 @@ S_i = \{ \pi \in \Sym_n : \pi(i) = i \}.
 \noindent \textit{Hint:} Use the Galois correspondence to determine the number of elements that are not contained in a proper subfield of $L$.
 \end{enumerate} 
 \end{ex}
+
+\begin{sol}
+    \begin{enumerate}[label=(\roman*)]
+    \item We already know that $\sigma$ is an automorphism. We show that $\sigma$ has exactly order $n$:
+
+    Note that $|L| = |K|^{[L:K]} = q^n$. By Lagrange's theorem, we see that for all $x \in L^{\times}$,
+    \[
+    1 = x^{|L^{\times}|} = x^{q^n-1} \Rightarrow x = x \cdot x^{q^n-1} = x^{q^n} = \sigma^n(x)
+    \]
+    which shows $\sigma^n = \mathrm{id}_L$.
+    
+    $L^{\times}$ is a cyclic group, therefore $L^{\times} \cong C_{q^n-1} = \left\langle x \right\rangle$ for some $x \in L^{\times}$ with $o(x) = q^n-1$. For $0 < i < p$, we see that for such an $x$,
+    \[
+    \sigma^i(x) = x^{q^i} \neq x
+    \]
+    because $1 < q^i < q^n-1$. Therefore $\sigma^i \neq \mathrm{id}_L$ for $0 < i < n$ which proves that $o(\sigma) = n$. Therefore,
+    \[
+    n = |\left\langle \sigma \right\rangle| \leq |\Gal(L/K)| \leq [L:K] = n.
+    \]
+    This shows that $\Gal(L/K) = \left\langle \sigma \right\rangle \cong C_n$. Furthermore, as the inequalities force the equality $|\Gal(L/K)| = [L:K]$, we conclude that $L/K$ is a Galois extension.
+    \item Note that a cyclic group $C_n$ has a unique subgroup of index $d$ for each positive $d|n$. By the Galois correspondence, this shows that $L/K$ has a unique intermediate extension $L_d/K$ for any $d|[L:K] = n$. Observe that $L_n = L$ and $L_1 = K$.
+
+    We first determine the number of elements in $L$ that are not contained in any intermediate field of $L/K$:
+
+    \textit{$n=3$:} We have to calculate $|L_3 \setminus L_1| = q^3 - q^1 = q^3-q$.
+
+    \textit{$n=4$:} Note that $L_1 \subseteq L_2$, therefore the desired quantity is
+    \[
+    |L_4 \setminus L_2 | = q^4 - q^2.
+    \]
+
+    \textit{$n=6$:} We first determine
+    \[
+    |L_2 \cup L_3| = |L_3| + |L_2| - |L_2 \cap L_3| = |L_3| + |L_2| - |L_1| = q^2 + q^3 - q.
+    \]
+    As $L_1 \subseteq L_2,L_3$, the number of elements not contained in any intermediate fields is given by
+    \[
+    |L_6 \setminus (L_2 \cup L_3)| = q^6 - q^3 - q^2 + q.
+    \]
+
+    We know that each root $\alpha$ of an irreducible polynomial $f \in K[X]$ with $\deg f = n$ generates an extension $M/K$ with $[M:K] = n$ and therefore satisfies $\alpha^{q^n} = \alpha$. It follows that $f | X^{q^n} - X$.
+
+    As $X^{q^n}-X$ has $q^n$ distinct roots in $L$, we conclude that each irreducible polynomial $f$ has $n$ distinct roots in $M$. These roots can not lie in a proper intermediate field of $L/K$. On the other hand, each $\alpha \in L$ that does not lie in a proper intermediate field of $L/K$, satisfies $K(\alpha) = L$ and therefore $\deg f(\alpha,K) = [L:K]= n$.
+
+    Therefore, the number $\mathcal{P}_{q,n}$ of irreducible (monic) $f \in K[X]$ with $\deg f = n$ is $\mathcal{P}_{q,n} = \frac{\mathcal{A}_{q,n}}{n}$ where we denote by $\mathcal{A}_{q,n}$ the number of elements in an extension $L/K$ with $[L:K]$ that are not in a proper intermediate field. We conclude that the number of irreducible monic polynomials in the considered cases is
+    \begin{align*}
+        \mathcal{P}_{q,3} & = \frac{q^3 - q}{3},\\
+        \mathcal{P}_{q,4} & = \frac{q^4 - q^2}{4}, \\
+        \mathcal{P}_{q,6} & = \frac{q^6 - q^3 - q^2 + q}{6} .
+    \end{align*}
+
+    \medskip
+
+    \noindent \textit{Remark:} For $|K| = q$, the general formula for the number of irreducible monic polynomials $f \in K[X]$ with $\deg f = n$ is
+    \[
+    \mathcal{P}_{q,n} = \frac{\sum_{d|n}\mu(n/d)q^d}{n}
+    \]
+    where $\mu$ is the \emph{Moebius function}.
+    \end{enumerate}
+\end{sol}
 
 \begin{ex}
 \label{9.3}
@@ -1606,6 +2031,7 @@ S_i = \{ \pi \in \Sym_n : \pi(i) = i \}.
     See \cref{10.5}.
 \end{sol}
 
+\newpage
 
 \section{Week 10}
 
@@ -1978,6 +2404,7 @@ Let $K$ be a field, $n \geq 1$ and let $E = K(x_1,\ldots,x_n)$ be the rational f
 \end{sol}
 
 \newpage
+
 \section{Week 11}
 
 \begin{ex}
@@ -2219,6 +2646,7 @@ which shows that $\omega + \omega^{-1} = \pm \sqrt{2}$, again depending on the c
 
 
 \newpage
+
 \section{Week 12}
 
 \begin{ex}
