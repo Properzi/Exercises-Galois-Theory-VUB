@@ -166,7 +166,7 @@ Let $p$ be a prime number. Denote by $\binom{n}{k}$ the binomial coefficient ``$
 \begin{sol}~
 
     \begin{enumerate}[label=(\roman*)]
-        \item Note that $p \nmid i$ for $1 \leq i \leq p-1$, therefore $p \nmid 1 \cdot 2 \ldots \cdot k = k!$ for $k \leq p$. If $k \geq 1$, then $p \nmid (p-k)!$ for the same reason.
+        \item Note that $p \nmid i$ for $1 \leq i \leq p-1$, therefore $p \nmid 1 \cdot 2 \ldots \cdot k = k!$ for $k \leq p-1$. If $k \geq 1$, then $p \nmid (p-k)!$ for the same reason.
 
         We have $\binom{p}{k} = \frac{p!}{k!(p-k)!}$ which can also be written as
         \[
@@ -1456,7 +1456,7 @@ f = g(X^p) = \sum_{i=0}^n a_iX^{i\cdot p} = \sum_{i=0}^n (\Phi_K^{-1}(a_i))^pX^{
 \]
 As all $b_i \in K$, this shows that $f$ cannot be irreducible. Therefore, we have proven that inseparable extensions of $K$ can only exist if $\Phi_K$ isn't bijective.
 
-Suppose now that $K$ has positive characteristic $p$ and $\Phi_K$ isn't bijective. As a homomorphism of fields, $\Phi_K$ is always injective, therefore it is not surjective. Suppose that $a \not\in \mathrm{im}\ \Phi_K$. This means that $a$ is not a $p$-th power. Let $\alpha$ be a root of $f$ in an algebraic closure $\overline{K}/K$. We claim that the extension $K(\alpha)/K$ is inseparable. As $\alpha^p = a$, we see that
+Suppose now that $K$ has positive characteristic $p$ and $\Phi_K$ isn't bijective. As a homomorphism of fields, $\Phi_K$ is always injective, therefore it is not surjective. Suppose that $a \not\in \im\ \Phi_K$. This means that $a$ is not a $p$-th power. Let $\alpha$ be a root of $f$ in an algebraic closure $\overline{K}/K$. We claim that the extension $K(\alpha)/K$ is inseparable. As $\alpha^p = a$, we see that
 \[
 f(\alpha, K) | X^p - a = X^p - \alpha^p = (X - \alpha)^p \Rightarrow f(\alpha,K) = (X- \alpha)^k \textnormal{ for some } 2 \leq k \leq p.
 \]
@@ -2015,7 +2015,7 @@ This implies $\prod_{\pi \in \Gal(L/K)} \pi(E) = L$.
         \[
         \mathrm{trace}_{L/K}(a)=0 \Leftrightarrow \exists c \in L: a = c - \tau c.
         \]
-        \noindent \textit{Hint:} Determine $\dim_K \ker (c \mapsto c- \tau c)$ and $\dim_K \ker (\mathrm{trace}_{L/K})$ in order to prove that $\mathrm{im}(c \mapsto c - \tau c) = \ker (\mathrm{trace}_{L/K})$.
+        \noindent \textit{Hint:} Determine $\dim_K \ker (c \mapsto c- \tau c)$ and $\dim_K \ker (\mathrm{trace}_{L/K})$ in order to prove that $\im(c \mapsto c - \tau c) = \ker (\mathrm{trace}_{L/K})$.
     \end{enumerate}
 \end{ex}
 \begin{sol}
@@ -2332,7 +2332,7 @@ Let $K$ be a field, $n \geq 1$ and let $E = K(x_1,\ldots,x_n)$ be the rational f
         \[
         \mathrm{trace}_{L/K}(a) \Leftrightarrow \exists c \in L: a = c - \tau c.
         \]
-        \noindent \textit{Hint:} Determine $\dim_K \ker (c \mapsto c- \tau c)$ and $\dim_K \ker (\mathrm{trace}_{L/K})$ in order to prove that $\mathrm{im}(c \mapsto c - \tau c) = \ker (\mathrm{trace}_{L/K})$.
+        \noindent \textit{Hint:} Determine $\dim_K \ker (c \mapsto c- \tau c)$ and $\dim_K \ker (\mathrm{trace}_{L/K})$ in order to prove that $\im(c \mapsto c - \tau c) = \ker (\mathrm{trace}_{L/K})$.
     \end{enumerate}
 \end{ex}
 \begin{sol}
@@ -2348,9 +2348,9 @@ Let $K$ be a field, $n \geq 1$ and let $E = K(x_1,\ldots,x_n)$ be the rational f
         \mathrm{trace}_{L/K} = \sum_{\sigma \in \Hom(L/K,\Bar{L}/K)} \sigma \not \equiv 0.
         \]
 
-        \item Let $\gamma: L \to L$; $c \mapsto c - \tau c$. Our goal is to show that $\mathrm{im}\ \gamma = \ker \mathrm{trace}_{L/K}$.
+        \item Let $\gamma: L \to L$; $c \mapsto c - \tau c$. Our goal is to show that $\im\ \gamma = \ker \mathrm{trace}_{L/K}$.
 
-        First of all, $\mathrm{im} \gamma \subseteq  \ker \mathrm{trace}_{L/K}$, as for all $x \in L$,
+        First of all, $\im \gamma \subseteq  \ker \mathrm{trace}_{L/K}$, as for all $x \in L$,
         \begin{align*}
         \mathrm{trace}_{L/K}(\gamma(x)) & = \mathrm{trace}_{L/K}(x - \tau x) \\
         & = \sum_{\sigma \in \Gal(L/K)} \sigma(x) - \tau(x) \\
@@ -2365,19 +2365,19 @@ Let $K$ be a field, $n \geq 1$ and let $E = K(x_1,\ldots,x_n)$ be the rational f
         \]
         Therefore $\dim_K \ker \gamma = 1$ which implies that
         \[
-        \dim \mathrm{im}\ \gamma = \dim_KL - \dim_K \ker \gamma = \dim_KL - 1.
+        \dim \im\ \gamma = \dim_KL - \dim_K \ker \gamma = \dim_KL - 1.
         \]
 
-        On the other hand, we have shown that $\mathrm{trace}_{L/K} \neq 0$, therefore $\mathrm{im}\  \mathrm{trace}_{L/K} = K$, i.e. $\dim_K \mathrm{trace}_{L/K} = 1$ which tells us that
+        On the other hand, we have shown that $\mathrm{trace}_{L/K} \neq 0$, therefore $\im\  \mathrm{trace}_{L/K} = K$, i.e. $\dim_K \mathrm{trace}_{L/K} = 1$ which tells us that
         \[
-        \dim_K \ker \mathrm{trace}_{L/K} = \dim_KL - \dim_K \mathrm{im} \ \mathrm{trace}_{L/K} = \dim_KL - 1.
+        \dim_K \ker \mathrm{trace}_{L/K} = \dim_KL - \dim_K \im \ \mathrm{trace}_{L/K} = \dim_KL - 1.
         \]
 
         To conclude, we have shown that
         \[
-        \dim \mathrm{im}\ \gamma  = \dim_KL - 1 = \dim_K \ker \mathrm{trace}_{L/K}.
+        \dim \im\ \gamma  = \dim_KL - 1 = \dim_K \ker \mathrm{trace}_{L/K}.
         \]
-        As $\mathrm{im}\ \gamma \subseteq \ker \mathrm{trace}_{L/K}$, this shows that $\mathrm{im}\ \gamma = \ker \mathrm{trace}_{L/K}$.\qedhere
+        As $\im\ \gamma \subseteq \ker \mathrm{trace}_{L/K}$, this shows that $\im\ \gamma = \ker \mathrm{trace}_{L/K}$.\qedhere
     \end{enumerate}
 \end{sol}
 
@@ -2834,13 +2834,13 @@ Let $f=X^5-5\in \Q[X]$, $E$ be a decomposition field of $f$ over $\Q$ and $G=\Ga
 \begin{sol}
     \begin{enumerate}[label=(\roman*)]
 
-    \item Exactness at $\mu_n$ is clear: as $\iota$ is an injection: therefore, $\ker \iota = 1 = \mathrm{im}\ (1 \to \mu_n)$.
+    \item Exactness at $\mu_n$ is clear: as $\iota$ is an injection: therefore, $\ker \iota = 1 = \im\ (1 \to \mu_n)$.
 
-    By construction, $\varepsilon$ is a surjection, which implies $\mathrm{im}\ \varepsilon = (L^{\times})^n = \ker ( (L^{\times})^n \to 1)$. It follows that the sequence is exact at $(L^{\times})^n$.
+    By construction, $\varepsilon$ is a surjection, which implies $\im\ \varepsilon = (L^{\times})^n = \ker ( (L^{\times})^n \to 1)$. It follows that the sequence is exact at $(L^{\times})^n$.
 
     Finally,
     \[
-    \ker \varepsilon = \{ x \in L^{\times}: x^n = 1 \} = \mu_n = \mathrm{im}\ \iota
+    \ker \varepsilon = \{ x \in L^{\times}: x^n = 1 \} = \mu_n = \im\ \iota
     \]
     as all $n$-th roots of unity are already contained in $K$. Therefore, the given sequence is indeed exact.
 
@@ -2865,9 +2865,9 @@ Let $f=X^5-5\in \Q[X]$, $E$ be a decomposition field of $f$ over $\Q$ and $G=\Ga
     \]
     Where $\iota^0$, $\varepsilon^0$ are given by restriction of $\iota$ resp. $\varepsilon$.
 
-    As $\mathrm{im}\ \varepsilon^0 = (K^{\times})^n$, the exactness of this sequence tells us that
+    As $\im\ \varepsilon^0 = (K^{\times})^n$, the exactness of this sequence tells us that
     \[
-    \Hom(G,\mu_n) \cong ((L^{\times})^n \cap K) / \mathrm{im}\ \varepsilon^0 = ((L^{\times})^n \cap K) / (K^{\times})^n.
+    \Hom(G,\mu_n) \cong ((L^{\times})^n \cap K) / \im\ \varepsilon^0 = ((L^{\times})^n \cap K) / (K^{\times})^n.
     \]
     Using the construction of $\delta$ in Theorem 12.13, we can make this isomorphism explicit: take an element $[x] \in ((L^{\times})^n \cap K) / (K^{\times})^n$, represented by $x \in (L^{\times})^n \cap K$. Take an $\alpha \in L^{\times}$ with $x = \alpha^n$, then $\delta(x): G \to \mu_n$ is the map given by
     \[
