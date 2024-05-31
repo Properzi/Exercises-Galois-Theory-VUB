@@ -465,6 +465,7 @@ The following lemma can be used, without proof, in the following exercise.
 \end{ex}
 
 
+
 \begin{ex}
 \label{2.4}
 Let $\zeta\in\C$ be a primitive cubic root of one.
@@ -714,6 +715,30 @@ The following lemma can be used, without proof, in the following exercise.
     $p\mid a_i$ for all $i\in\{0,1,\dots,n-1\}$, $p\nmid a_n$ and
     $p^2\nmid a_0$. Then $f$ is irreducible in $K[X]$. 
 \end{ex}
+\begin{sol}
+    Suppose that $f$ is reducible in $K[X]$.
+    Then $g=c^{-1}f$, where $c$ is the content of $f$,
+    would be reducible and primitive.
+    Hence, by Gauss' Lemma, $g$ is also 
+    reducible in $A[X]$.
+    So $c^{-1}f=g=hl$, for some non-constant polynomials $h,l\in A[X]$.
+    Now consider $\pi:A\to A/(p)$, $a\mapsto \overline{a}$ the natural projection.
+    We know that $\overline{a_i}=0$ for all 
+    $i\in\{0,1,\dots, n-1\}$ and $\overline{a_n}\neq 0$.
+    Therefore 
+    \[
+    \overline{\pi}(ch)\overline{\pi}(l)=\overline{c}\:\overline{\pi}(h)\overline{\pi}(l)=\overline{\pi}(f)=\overline{a_n}X^n\in  A/(p)[X].
+    \]
+    But $A/(p)[X]$ is a UFD so the only possibility
+    is that $\overline{\pi}(ch)=\overline{d}X^t$ and $\overline{\pi}(l)=\overline{f}X^s$, for
+    some $f,d\in A/(p)\setminus\{\overline{0}\}$
+    and $t,s\in\{1,\dots, n-1\}$.
+    In particular, $\overline{\pi}(ch)$ and $\overline{\pi}(l)$ have both constant term 
+    equal to 0.
+    Hence $p$ divides $ch(0)$ and $l(0)$ in $A$.
+    Therefore $p^2$ divides $ch(0)l(0)=f(0)$,
+    a contradiction.
+\end{sol}
 
 
 
